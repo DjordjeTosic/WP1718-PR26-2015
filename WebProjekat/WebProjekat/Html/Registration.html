@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+    <script src="/Scripts/Registration.js"></script>
+    <link href="../Content/style.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+</head>
+<body style="padding-top:20px">
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-coll" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="Index.html" class="navbar-brand"><i class="fas fa-taxi"></i>&nbsp; Taxi</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-coll">
+                <ul class="nav navbar-nav">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="navbar-nav nav navbar-right">
+                    <li><a href="Login.html">Login &nbsp;<i class="fas fa-user"></i></a></li>
+                    <li class="active"><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="container" style="padding-top:70px">
+            <div class="well">
+                
+                <table class="table table-bordered" >
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Registracija novog korisnika</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="regKorisnickoIme" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control"  id="regEmail" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="regLozinka" name="lozinka" /></td>
+                    </tr>
+                    <tr>
+                        <td>Potvrdite lozinku</td>
+                        <td><input type="password" placeholder="Potvrdite lozinku" class="form-control" id="regPotvrda" name="lozinkaPotvrda" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="regIme" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="regPrezime" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="regTelefon" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="regMusko" name="pol" value="Musko">Muskarac
+                            <input type="radio" id="regZensko" name="pol" value="Zensko" />Zena
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonReg" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+
+
+        <div id="errorReg" class="alert alert-danger collapse">
+            <a id="linkClose" href="#" class="close">&times;</a>
+            <div id="divErrorText"></div>
+        </div>
+
+        <!--<body style="padding-top:20px">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-coll" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="Index.html" class="navbar-brand"><i class="fas fa-taxi"></i>&nbsp; E-Taxi</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="nav-coll">
+                        <ul class="nav navbar-nav">
+                            <li><a href="Index.html">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <ul class="navbar-nav nav navbar-right">
+                            <li><a href="Login.html">Login &nbsp;<i class="fas fa-user"></i></a></li>
+                            <li class="active"><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">
+                <div class="well">
+                    <form method="post" action="#" id="regForm">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr class="success">
+                                    <th colspan="2" style="text-align:center">
+                                        New User Registration
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Username</td>
+                                    <td><input type="text" class="form-control" name="username" id="txtUsername" placeholder="Username" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><input type="email" class="form-control" name="email" id="txtEmail" placeholder="Email" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td><input type="password" class="form-control" name="password" id="txtPassword" placeholder="Password" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Confirm Password</td>
+                                    <td>
+                                        <input type="password" class="form-control" name="confirmPassword" id="txtConfirmPassword" placeholder="Confirm Password" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>First Name</td>
+                                    <td><input type="text" class="form-control" name="firstName" id="txtFirstName" placeholder="First Name" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name</td>
+                                    <td><input type="text" class="form-control" name="lastName" id="txtLastName" placeholder="Last Name" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>JMBG</td>
+                                    <td><input type="number" class="form-control" name="JMBG" id="txtJmbg" placeholder="JMBG" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Contact Number</td>
+                                    <td><input type="text" class="form-control" name="contactNumber" id="txtContactNumber" placeholder="Contact Number" /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>
+                                        <input type="radio" name="gender" id="gndrMale" value="Muskarac"> Male &nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="gndrFemale" name="gender" value="Zena"> Female
+                                    </td>
+                                </tr>
+                                <tr class="success">
+                                    <td colspan="2">
+                                        <input id="btnRegister" class="form-control btn btn-success" type="submit" value="Register" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                    <script>validateRegister()</script>
+
+                    <div class="modal fade" tabindex="-1" id="successModal"
+                         data-keyboard="false" data-backdrop="static">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">Success</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <h2 class="modal-title">Registration Successful!</h2>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divError" class="alert alert-danger collapse">
+                        <a id="linkClose" href="#" class="close">&times;</a>
+                        <div id="divErrorText"></div>
+                    </div>
+                </div>
+            </div>-->
+
+</body>
+</html>

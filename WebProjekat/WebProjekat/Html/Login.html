@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+    <script src="/Scripts/Login.js"></script>
+    <link href="/Content/style.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+</head>
+<body>
+
+    <div id="pocetna">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-coll" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="Index.html" class="navbar-brand"><i class="fas fa-taxi"></i>&nbsp; Taxi</a>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-coll">
+                    <ul class="nav navbar-nav">
+                        <li><a href="Index.html">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="navbar-nav nav navbar-right">
+                        <li><a href="Login.html">Login &nbsp;<i class="fas fa-user"></i></a></li>
+                        <li><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </div>
+    <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">
+        <div class="login" id="prijava">
+            <table class="table table-bordered">
+                <tr>
+                    <th colspan="2" style="text-align:center">Login</th>
+                </tr>
+                <tr>
+                    <td>Korisnicko ime</td>
+                    <td><input id="korisnickoIme" type="text" class="form-control" placeholder="Username" /></td>
+                </tr>
+                <tr>
+                    <td>Lozinka</td>
+                    <td><input id="lozinka" type="password" class="form-control" placeholder="Password" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input id="prijavaDugme" type="submit" value="Login" class="form-control" style="background-color:chartreuse" /></td>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <!--<div id="prijava">
+        <h1>Prijava</h1>
+
+        <table>
+            <tr>
+                <td>Korisnicko ime</td>
+                <td><input id="korisnickoIme" name="KorisnickoIme" type="text" /></td>
+            </tr>
+            <tr>
+                <td>Lozinka</td>
+                <td><input id="lozinka" name="Lozinka" type="password" /></td>
+            </tr>
+        </table>
+
+        <button id="prijavaDugme" type="submit">Prijavi se</button>
+
+        <a href="Index.html">Home</a>
+        <a href="Registration.html">Sign up</a>
+
+    </div>-->
+    <!--<div id="uspesno">
+        <div class="modal-header">
+            <h3 class="modal-title">Success</h3>
+        </div>
+        <div class="modal-body">
+            <h2>Login successfull!</h2>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn-success" data-dismiss="modal">Close</button>
+        </div>
+    </div>-->
+
+
+    <div id="divError" class="alert alert-danger collapse">
+        <a id="linkClose" href="#" class="close">&times;</a>
+        <div id="divErrorText"></div>
+    </div>
+</body>
+</html>
