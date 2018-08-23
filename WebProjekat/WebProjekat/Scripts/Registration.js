@@ -6,8 +6,11 @@ $(document).ready(function () {
     
     $('#buttonReg').click(function () {
         var gndr;
-        if ($('#regMusko').is('checked')) {
+        var isC;
+        isC = $('#regMusko').is(':checked');
+        if (isC) {
             gndr = $('#regMusko').val();
+            alert("Raus")
         }
         else {
             gndr = $('#regZensko').val();
@@ -20,6 +23,7 @@ $(document).ready(function () {
             Ime: $('#regIme').val(),
             Prezime: $('#regPrezime').val(),
             KontaktTelefon: $('#regTelefon').val(),
+            JMBG: $('#regJMBG').val(),
             Pol: gndr,
         }
         

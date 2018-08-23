@@ -5,6 +5,7 @@ $('#linkClose').click(function () {
 });
 
 $(document).ready(function () {
+    $('#successModal').hide();
     $('#prijavaDugme').click(function () {
 
         let korisnik = {
@@ -25,9 +26,11 @@ $(document).ready(function () {
                 if (data) {
                     //$('#uspesno').modal('show');
                     localStorage.setItem("logged", korisnik.KorisnickoIme);
+                    //$('#successModal').show();
                     //window.location.href = "Index.html";
                 }
                 else {
+                    alert("Pogresno korisnicko ime ili sifra!");
                     window.location.href = "Registration.html";
                 }
             },

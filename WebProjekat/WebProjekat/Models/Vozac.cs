@@ -15,8 +15,8 @@ namespace Projekat.Models
         public Vozac() { }
 
 
-        public Vozac(int id, string ime, string prezime, string korisnickoIme, string lozinka, string jmbg, string kontakt, string pol,
-            string email, double x, double y, string ulicaBroj, string mesto, string zip, string brojAuta, int godisteAuta, string registracijaAuta
+        public Vozac(int id, string korisnickoIme, string lozinka, string ime, string prezime, string pol, string jmbg, string kontakt, 
+            string email,string uloga, double x, double y, string ulicaBroj, string mesto, string zip, string brojAuta, int godisteAuta, string registracijaAuta
             , string tipAuta, string z, string b) : this()
         {
             if (b.Equals("DA")) { Ban = Banovan.DA; } else if (b.Equals("NE")) { Ban = Banovan.NE; } else { Ban = Banovan.IGNORE; }
@@ -31,6 +31,7 @@ namespace Projekat.Models
             KontaktTelefon = kontakt;
             if (pol.Equals("Muski")) { Pol = Enums.Pol.Muski; } else { Pol = Enums.Pol.Zenski; }
             Email = email;
+            Uloga = Uloga.Vozac;
 
             //LOKACIJA
             Lokacija l = new Lokacija();

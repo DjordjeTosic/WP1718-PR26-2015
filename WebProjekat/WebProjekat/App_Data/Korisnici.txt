@@ -1,2 +1,6 @@
-﻿0:Djole:djole:Djordje:Tosic:Zenski::0644861893:djole.tosic96@gmail.com:Musterija
-1:Pereca:sifra:NekoIme:NekoPrezime:Zenski::06532432:pereca@gmail.com:Musterija
+0:krele:krele:Djoka:Tosic:Zenski:2511996890149:0644861893:djole.tosic96@gmail.com:Musterija
+
+
+
+
+

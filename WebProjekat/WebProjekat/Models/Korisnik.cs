@@ -20,8 +20,9 @@ namespace Projekat.Models
         public Uloga Uloga { get; set; }
         public Banovan Ban { get; set; }
         public Korisnik() { }
+        public List<Voznja> voznjeKorisnika { get; set; }
 
-        public Korisnik(int id, string ime, string prezime, string korisnickoIme, string lozinka, string jmbg, string kontakt, string pol, string email, string b) : this()
+        public Korisnik(int id,  string korisnickoIme, string lozinka, string ime, string prezime, string pol, string jmbg, string kontakt,  string email, string b) : this()
         {
             if (b.Equals("DA")) { Ban = Banovan.DA; } else if (b.Equals("NE")) { Ban = Banovan.NE; } else { Ban = Banovan.IGNORE; }
             Id = id;
@@ -33,6 +34,7 @@ namespace Projekat.Models
             KontaktTelefon = kontakt;
             if (pol.Equals("Muski")) { Pol = Pol.Muski; } else { Pol = Pol.Zenski; }
             Email = email;
+            voznjeKorisnika = new List<Voznja>();
         }
     }
 }

@@ -35,7 +35,7 @@
                     <ul class="navbar-nav nav navbar-right">
                         <li id="logInKorisnik"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>
                         <li><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -64,10 +64,11 @@
                     <ul class="nav navbar-nav">
                         <li><a href="Index.html"><i class="fas fa-"></i> Home</a></li>
                         <li id="profilKorisnik"><a href="#">My Profile</a></li>
-                        
+                        <li id="voznjaKorisnik"><a href="#">Dodaj Voznju</a></li>
+
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
-                        <li id="logInKorisnik"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>
+                        <!--<li id="logInKorisnik"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
                         <li><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
                         <li id="logOutKorisnik"><a href="#">Log Out &nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
@@ -76,6 +77,67 @@
 
         </nav>
 
+
+    </div>
+
+    <div id="profilKorisnika">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Informacije o korisniku</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="ProfilKorisnickoImeKorisnik" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control" id="ProfilEmailKorisnik" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="ProfilLozinkaKorisnik" name="lozinka" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="ProfilImeKorisnik" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="ProfilPrezimeKorisnik" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>JMBG</td>
+                        <td><input type="text" placeholder="JMBG" class="form-control" id="ProfilJMBGKorisnik" name="jmbg" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="ProfilTelefonKorisnik" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="ProfilMuskoKorisnik" name="polP" value="Muski">Muskarac
+                            <input type="radio" id="ProfilZenskoKorisnik" name="polP" value="Zenski" />Zena
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonKorisnik" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
 
     </div>
 
@@ -100,7 +162,7 @@
                         <li id="dodajVozaca"><a href="#">Dodaj vozaca</a></li>
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
-                        <li id="logInDispecer"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>
+                        <!--<li id="logInDispecer"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
                         <li><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
                         <li id="logOutDispecer"><a href="#">Log Out &nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
@@ -111,6 +173,363 @@
 
 
     </div>
+
+    <div id="profilDispecera">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Informacije o dispeceru</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="ProfilKorisnickoImeDispecer" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control" id="ProfilEmailDispecer" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="ProfilLozinkaDispecer" name="lozinka" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="ProfilImeDispecer" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="ProfilPrezimeDispecer" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>JMBG</td>
+                        <td><input type="text" placeholder="JMBG" class="form-control" id="ProfilJMBGDispecer" name="jmbg" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="ProfilTelefonDispecer" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="ProfilMuskoDispecer" name="polP" value="Muski">Muskarac
+                            <input type="radio" id="ProfilZenskoDispecer" name="polP" value="Zenski" />Zena
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonDispecer" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="dodajVozacaDeo">
+        <div class="container" style="padding-top:50px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Dodaj novog vozaca</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="KorisnickoImeVozac" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control" id="EmailVozac" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="LozinkaVozac" name="lozinka" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="ImeVozac" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="PrezimeVozac" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>JMBG</td>
+                        <td><input type="text" placeholder="JMBG" class="form-control" id="JMBGVozac" name="jmbg" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="TelefonVozac" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="MuskoVozac" name="pol" value="Muski">Muskarac
+                            <input type="radio" id="ZenskoVozac" name="pol" value="Zenski" />Zena
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata X</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="KordinataXVozac" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata Y</td>
+                        <td><input type="text" placeholder="Kordinata Y" class="form-control" id="KordinataYVozac" name="kordinatay" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica i broj</td>
+                        <td><input type="text" placeholder="Ulica i broj" class="form-control" id="UlicaVozac" name="ulicavozac" /></td>
+                    </tr>
+                    <tr>
+                        <td>Grad</td>
+                        <td><input type="text" placeholder="Grad" class="form-control" id="GradVozac" name="grad" /></td>
+                    </tr>
+                    <tr>
+                        <td>Postanski broj</td>
+                        <td><input type="text" placeholder="Postanski broj" class="form-control" id="PostaVozac" name="posta" /></td>
+                    </tr>
+                    <tr>
+                        <td>Godiste</td>
+                        <td><input type="text" placeholder="Godina proizvodnje" class="form-control" id="GodinaVozac" name="godina" /></td>
+                    </tr>
+                    <tr>
+                        <td>Broj tablica</td>
+                        <td><input type="text" placeholder="Broj tablica" class="form-control" id="TablicaVozac" name="tablice" /></td>
+                    </tr>
+                    <tr>
+                        <td>Tip Vozila</td>
+                        <td>
+                            <input type="radio" id="TipAutaObicni" value="Putnicki" name="Tip"> Putnicki &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="KombiAuto" name="Tip" value="Kombi"> Kombi
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div id="vozac">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-coll" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="Index.html" class="navbar-brand"><i class="fas fa-taxi"></i>&nbsp; Taxi</a>
+                </div>
+                <div class="collapse navbar-collapse" id="nav-coll">
+
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="Index.html"><i class="fas fa-"></i> Home</a></li>
+                        <li id="profilVozac"><a href="#">My Profile</a></li>
+                        <li id="lokacijaVozac"><a href="#">Trenutna lokacija</a></li>
+                    </ul>
+                    <ul class="navbar-nav nav navbar-right">
+                        <!--<li id="logInVozac"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
+                        <li><a href="Registration.html">Sign Up &nbsp;<i class="fas fa-user-plus"></i></a></li>
+                        <li id="logOutVozac"><a href="#">Log Out &nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+
+
+    </div>
+
+    <div id="profilVozaca">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Informacije o vozacu</th>
+                        </tr>
+                    </thead>
+
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="ProfilKorisnickoImeVozac" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control" id="ProfilEmailVozac" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="ProfilLozinkaVozac" name="lozinka" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="ProfilImeVozac" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="ProfilPrezimeVozac" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>JMBG</td>
+                        <td><input type="text" placeholder="JMBG" class="form-control" id="ProfilJMBGVozac" name="jmbg" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="ProfilTelefonVozac" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="ProfilMuskoVozac" name="polP" value="Muski">Muskarac
+                            <input type="radio" id="ProfilZenskoVozac" name="polP" value="Zenski" />Zena
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="lokacijaVozaca">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Lokacija vozaca</th>
+                        </tr>
+                    </thead>
+                    <tr style="display:none">
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="LokacijaKorisnickoImeVozac" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata X</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="LokacijaKordinataXVozac" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata Y</td>
+                        <td><input type="text" placeholder="Kordinata Y" class="form-control" id="LokacijaKordinataYVozac" name="kordinatay" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica i broj</td>
+                        <td><input type="text" placeholder="Ulica i broj" class="form-control" id="LokacijaUlicaVozac" name="ulicavozac" /></td>
+                    </tr>
+                    <tr>
+                        <td>Grad</td>
+                        <td><input type="text" placeholder="Grad" class="form-control" id="LokacijaGradVozac" name="grad" /></td>
+                    </tr>
+                    <tr>
+                        <td>Postanski broj</td>
+                        <td><input type="text" placeholder="Postanski broj" class="form-control" id="LokacijaPostaVozac" name="posta" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonLokacijaVozac" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="dodavanjeVoznje">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Lokacija vozaca</th>
+                        </tr>
+                    </thead>
+                    <tr style="display:none">
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="LokacijaKorisnickoImeVozac" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata X</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="KordinataXVoznja" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata Y</td>
+                        <td><input type="text" placeholder="Kordinata Y" class="form-control" id="KordinataYVoznja" name="kordinatay" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica i broj</td>
+                        <td><input type="text" placeholder="Ulica i broj" class="form-control" id="UlicaBrojVoznja" name="ulicavozac" /></td>
+                    </tr>
+                    <tr>
+                        <td>Grad</td>
+                        <td><input type="text" placeholder="Grad" class="form-control" id="GradVoznja" name="grad" /></td>
+                    </tr>
+                    <tr>
+                        <td>Postanski broj</td>
+                        <td><input type="text" placeholder="Postanski broj" class="form-control" id="PostaVoznja" name="posta" /></td>
+                    </tr>
+                    <tr>
+                        <td>Tip Vozila</td>
+                        <td>
+                            <input type="radio" id="TipAutaObicniVoznja" value="Putnicki" name="Tip"> Putnicki &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="KombiAutoVoznja" name="Tip" value="Kombi"> Kombi
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonVoznja" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
 
 
 

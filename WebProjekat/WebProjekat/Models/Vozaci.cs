@@ -23,8 +23,8 @@ namespace Projekat.Models
             {
                 string[] tokens = line.Split(':');
                 Vozac p = new Vozac(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8],
-                    double.Parse(tokens[9]), double.Parse(tokens[10]), tokens[11], tokens[12], tokens[13], tokens[14], int.Parse(tokens[15]),
-                    tokens[16], tokens[17], tokens[18], tokens[19]);
+                    tokens[9],double.Parse(tokens[10]), double.Parse(tokens[11]), tokens[12], tokens[13], tokens[14], tokens[15], int.Parse(tokens[16]),
+                    tokens[17], tokens[18], tokens[19], tokens[20]);
                 //p.Id = list.Count.ToString();
                 list.Add(p);
             }

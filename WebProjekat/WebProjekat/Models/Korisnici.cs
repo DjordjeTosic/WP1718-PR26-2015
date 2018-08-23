@@ -14,6 +14,7 @@ namespace Projekat.Models
         public Korisnici(string path)
         {
 
+            //var file = File.Open(path, FileMode.Open);
             path = HostingEnvironment.MapPath(path);
             list = new List<Korisnik>();
             FileStream stream = new FileStream(path, FileMode.Open);
@@ -21,6 +22,10 @@ namespace Projekat.Models
             string line = "";
             while ((line = sr.ReadLine()) != null)
             {
+                if(line=="" || line == null)
+                {
+                    break;
+                }
                 string[] tokens = line.Split(':');
                 Korisnik p = new Korisnik(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9]);
                 //p.Id = list.Count.ToString();
@@ -28,6 +33,7 @@ namespace Projekat.Models
             }
             sr.Close();
             stream.Close();
+            //file.Close();
         }
     }
 }
