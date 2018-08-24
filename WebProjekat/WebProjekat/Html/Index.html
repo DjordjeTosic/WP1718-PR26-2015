@@ -65,6 +65,7 @@
                         <li><a href="Index.html"><i class="fas fa-"></i> Home</a></li>
                         <li id="profilKorisnik"><a href="#">My Profile</a></li>
                         <li id="voznjaKorisnik"><a href="#">Dodaj Voznju</a></li>
+                        <li id="voznjaIzmena"><a href="#">Izmeni Voznju</a></li>
 
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
@@ -78,6 +79,89 @@
         </nav>
 
 
+    </div>
+
+    <div id="otkazKomentar">
+        <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">
+                                Komentar
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ocena</td>
+                            <td><input type="number" min="0" max="10" class="form-control" id="ocenaKomentar" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Opis</td>
+                            <td><textarea rows="4" cols="170" id="opisKomentar"></textarea> </td>
+                        </tr>
+                        <tr class="success">
+                            <td colspan="2">
+                                <input id="buttonKomentar" class="form-control btn btn-success" type="button" value="Save Comment" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="izmenaVoznjeTabela">
+        <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">
+                                Lokacija
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Koordinata X</td>
+                            <td><input type="text" class="form-control" id="txtKordinataX" placeholder="Koordinata X" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Koordinata Y</td>
+                            <td><input type="text" class="form-control" id="txtKordinataY" placeholder="Koordinata Y" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Ulica i broj</td>
+                            <td><input type="text" class="form-control" id="txtUlicaBroj" placeholder="Ulica i broj" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Grad</td>
+                            <td><input type="text" class="form-control" id="txtGrad" placeholder="Grad" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Postanski broj</td>
+                            <td><input type="text" class="form-control" id="txtPosta" placeholder="Postanski broj" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Tip</td>
+                            <td>
+                                <input type="radio" id="txtTipAuto" value="Putnicki"> Putnicki &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="txtTipKombi" name="Tip" value="Kombi"> Kombi
+                            </td>
+                        </tr>
+
+                        <tr class="success">
+                            <td colspan="2">
+                                <input id="btnChange" class="form-control btn btn-success" type="button" value="Sacuvaj Izmene" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="profilKorisnika">
@@ -528,6 +612,12 @@
         </div>
 
     </div>
+    <div id="izmeniVoznjuKorisnik">
+        <div class="well">
+            <table id="tabelaVoznji" class="table table-bordered" border="1"></table>
+        </div>
+    </div>
+
 
 
 

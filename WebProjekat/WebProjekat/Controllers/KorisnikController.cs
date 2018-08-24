@@ -25,6 +25,27 @@ namespace WebProjekat.Controllers
             return user.KorisnickoIme;
         }
 
+        [HttpGet]
+        [Route("api/Korisnik/GetKorisnik")]
+        public List<Voznja> GetKorisnik()
+        {
+            Korisnici users = HttpContext.Current.Application["korisnici"] as Korisnici;
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            foreach (Korisnik k in users.list)
+            {
+                if (user.KorisnickoIme != "" && user.KorisnickoIme != null && user.KorisnickoIme == k.KorisnickoIme)
+                    return user.voznjeKorisnika;
+            }
+
+            return new List<Voznja>();
+        }
+
         [HttpPost]
         public Korisnik Post([FromBody]Korisnik korisnik)
         {
@@ -110,6 +131,122 @@ namespace WebProjekat.Controllers
             }
             return false;
 
+        }
+        [HttpPost]
+        [Route("api/Korisnik/PostKomentar")]
+        public bool PostKomentar([FromBody]Komentar komentar)
+        {
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            Korisnici users = HttpContext.Current.Application["korisnici"] as Korisnici;
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+
+            foreach (Korisnik korisnik in users.list)
+            {
+                if (korisnik.KorisnickoIme == user.KorisnickoIme)
+                {
+                    foreach (Voznja ride in korisnik.voznjeKorisnika)
+                    {
+                        if (ride.Id == komentar.Id)
+                        {
+                            ride.Komentar.Id = komentar.Id;
+                            ride.Komentar.DatumObjave = DateTime.UtcNow.ToString();
+                            ride.Komentar.idKorisnik = user.KorisnickoIme;
+                            ride.Komentar.Ocena = komentar.Ocena;
+                            ride.Komentar.Opis = komentar.Opis;
+
+                            string path = "~/App_Data/Voznje.txt";
+                            path = HostingEnvironment.MapPath(path);
+
+                            string line = String.Empty;
+
+                            line = ride.Id.ToString() + '|' + ride.DatumVreme.ToString() + '|' + ride.Lokacija.X + '|' + ride.Lokacija.Y + '|' +
+                                ride.Lokacija.Adresa.UlicaBroj + '|' + ride.Lokacija.Adresa.NaseljenoMesto + '|' + ride.Lokacija.Adresa.PozivniBrojMesta + '|' + ride.Automobil + '|' +
+                                ride.idKorisnik + '|' + ride.Odrediste.X + '|' + ride.Odrediste.Y + '|' + ride.Odrediste.Adresa.UlicaBroj + '|' + ride.Odrediste.Adresa.NaseljenoMesto + '|' + ride.Odrediste.Adresa.PozivniBrojMesta + '|' +
+                                ride.idDispecer + '|' + ride.idVozac + '|' + ride.Iznos + '|' + ride.Komentar.Opis + '|' + ride.Komentar.DatumObjave + '|' + ride.Komentar.idKorisnik + '|' + ride.Komentar.idVoznja + '|' +
+                                ride.Komentar.Ocena + '|' + ride.StatusVoznje;
+
+                            string[] arrLine = File.ReadAllLines(path);
+                            arrLine[ride.Id] = line;
+                            File.WriteAllLines(path, arrLine);
+
+                            foreach (Korisnik kor in users.list)
+                            {
+                                if (kor.KorisnickoIme == ride.idKorisnik)
+                                {
+                                    foreach (Voznja voznja in kor.voznjeKorisnika)
+                                    {
+                                        if (voznja.Id == ride.Id)
+                                        {
+                                            voznja.Komentar = ride.Komentar;
+                                        }
+                                    }
+                                }
+                            }
+
+                            Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
+                            HttpContext.Current.Application["voznje"] = voznje2;
+
+                            HttpContext.Current.Application["korisnici"] = users;
+
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+        [HttpDelete]
+        public bool Delete(string id)
+        {
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            Korisnici users = HttpContext.Current.Application["korisnici"] as Korisnici;
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+
+            foreach (Voznja ride in user.voznjeKorisnika)
+            {
+                if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana && ride.Id.ToString() == id)
+                {
+                    ride.StatusVoznje = Enums.StatusVoznje.Otkazana;
+
+                    
+                    string path = "~/App_Data/Voznje.txt";
+                    path = HostingEnvironment.MapPath(path);
+
+                    string line = String.Empty;
+
+                    line = ride.Id.ToString() + '|' + ride.DatumVreme.ToString() + '|' + ride.Lokacija.X + '|' + ride.Lokacija.Y + '|' +
+                                ride.Lokacija.Adresa.UlicaBroj + '|' + ride.Lokacija.Adresa.NaseljenoMesto + '|' + ride.Lokacija.Adresa.PozivniBrojMesta + '|' + ride.Automobil + '|' +
+                                ride.idKorisnik + '|' + ride.Odrediste.X + '|' + ride.Odrediste.Y + '|' + ride.Odrediste.Adresa.UlicaBroj + '|' + ride.Odrediste.Adresa.NaseljenoMesto + '|' + ride.Odrediste.Adresa.PozivniBrojMesta + '|' +
+                                ride.idDispecer + '|' + ride.idVozac + '|' + ride.Iznos + '|' + ride.Komentar.Opis + '|' + ride.Komentar.DatumObjave + '|' + ride.Komentar.idKorisnik + '|' + ride.Komentar.idVoznja + '|' +
+                                ride.Komentar.Ocena + '|' + ride.StatusVoznje;
+
+                    string[] arrLine = File.ReadAllLines(path);
+                    arrLine[ride.Id] = line;
+                    File.WriteAllLines(path, arrLine);
+                    //File.WriteAllLines(path, File.ReadAllLines(path).Where(l => !string.IsNullOrWhiteSpace(l)));
+
+                }
+            }
+
+            Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
+            HttpContext.Current.Application["voznje"] = voznje2;
+
+            return true;
         }
 
         [HttpPost]
@@ -204,6 +341,77 @@ namespace WebProjekat.Controllers
 
             return false;
 
+        }
+
+        [HttpPut]
+        public bool Put(string id, [FromBody] Voznja v)
+        {
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            Korisnici users = HttpContext.Current.Application["korisnici"] as Korisnici;
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+
+            foreach (Korisnik korisnik in users.list)
+            {
+                if (korisnik.KorisnickoIme == user.KorisnickoIme)
+                {
+                    foreach (Voznja ride in korisnik.voznjeKorisnika)
+                    {
+                        if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana && ride.Id.ToString() == id)
+                        {
+                            ride.Id = Int32.Parse(id);
+                            ride.DatumVreme = DateTime.UtcNow;
+                            ride.idKorisnik = user.KorisnickoIme;
+                            ride.Komentar = new Komentar();
+                            ride.Komentar.Opis = "";
+                            ride.Komentar.idKorisnik = "";
+                            ride.Odrediste.X = 0;
+                            ride.Odrediste = new Lokacija();
+                            ride.Odrediste.Y = 0.0;
+                            ride.Odrediste.Adresa = new Adresa();
+                            ride.Odrediste.Adresa.NaseljenoMesto = "";
+                            ride.Odrediste.Adresa.PozivniBrojMesta = "";
+                            ride.Odrediste.Adresa.UlicaBroj = "";
+                            ride.Lokacija.X = v.Lokacija.X;
+                            ride.Lokacija.Y = v.Lokacija.Y;
+                            ride.Lokacija.Adresa.NaseljenoMesto = v.Lokacija.Adresa.NaseljenoMesto;
+                            ride.Lokacija.Adresa.PozivniBrojMesta = v.Lokacija.Adresa.PozivniBrojMesta;
+                            ride.Lokacija.Adresa.UlicaBroj = v.Lokacija.Adresa.UlicaBroj;
+
+                            
+                            string path = "~/App_Data/voznje.txt";
+                            path = HostingEnvironment.MapPath(path);
+                            string line = String.Empty;
+
+                            line = ride.Id.ToString() + '|' + ride.DatumVreme.ToString() + '|' + ride.Lokacija.X + '|' + ride.Lokacija.Y + '|' +
+                                ride.Lokacija.Adresa.UlicaBroj + '|' + ride.Lokacija.Adresa.NaseljenoMesto + '|' + ride.Lokacija.Adresa.PozivniBrojMesta + '|' + ride.Automobil + '|' +
+                                ride.idKorisnik + '|' + ride.Odrediste.X + '|' + ride.Odrediste.Y + '|' + ride.Odrediste.Adresa.UlicaBroj + '|' + ride.Odrediste.Adresa.NaseljenoMesto + '|' + ride.Odrediste.Adresa.PozivniBrojMesta + '|' +
+                                ride.idDispecer + '|' + ride.idVozac + '|' + ride.Iznos + '|' + ride.Komentar.Opis + '|' + ride.Komentar.DatumObjave + '|' + ride.Komentar.idKorisnik + '|' + ride.Komentar.idVoznja + '|' +
+                                ride.Komentar.Ocena + '|' + ride.StatusVoznje;
+
+                            string[] arrLine = File.ReadAllLines(path);
+                            arrLine[ride.Id] = line;
+                            File.WriteAllLines(path, arrLine);
+                            //File.WriteAllLines(path, File.ReadAllLines(path).Where(l => !string.IsNullOrWhiteSpace(l)));
+                        }
+                    }
+                }
+
+                Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
+                HttpContext.Current.Application["voznje"] = voznje2;
+                Korisnici korisnici2 = new Korisnici(@"~/App_Data/Korisnici.txt");
+                HttpContext.Current.Application["korisnici"] = korisnici2;
+
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -63,6 +63,9 @@ $(document).ready(function () {
     $('#lokacijaVozaca').hide();
     $('#profilDispecera').hide();
     $('#dodavanjeVoznje').hide();
+    $('#izmeniVoznjuKorisnik').hide();
+    $('#otkazKomentar').hide();
+    $('#izmenaVoznjeTabela').hide();
 
     $('#logOutKorisnik').click(function () {
         $.ajax({
@@ -277,6 +280,9 @@ $(document).ready(function () {
     $('#profilKorisnik').click(function () {
         $('#profilKorisnika').show(),
             $('#dodavanjeVoznje').hide(),
+            $('#otkazKomentar').hide();
+        $('#izmenaVoznjeTabela').hide();
+            $('#izmeniVoznjuKorisnik').hide(),
             $('#ProfilKorisnickoImeKorisnik').val(profil.KorisnickoIme),
             $('#ProfilEmailKorisnik').val(profil.Email),
             $('#ProfilLozinkaKorisnik').val(profil.Lozinka),
@@ -358,6 +364,9 @@ $(document).ready(function () {
     $('#voznjaKorisnik').click(function () {
         $('#dodavanjeVoznje').show();
         $('#profilKorisnika').hide(),
+            $('#izmeniVoznjuKorisnik').hide();
+        $('#izmenaVoznjeTabela').hide();
+        $('#otkazKomentar').hide();
         $('#buttonVoznja').click(function () {
             let adresaVoznja = {
                 UlicaBroj: $('#UlicaBrojVoznja').val(),
@@ -392,4 +401,183 @@ $(document).ready(function () {
         });
 
     });
+
+
+    $('#voznjaIzmena').click(function () {
+        $('#dodavanjeVoznje').hide();
+        $('#profilKorisnika').hide(),
+            $('#izmeniVoznjuKorisnik').show();
+        $('#izmenaVoznjeTabela').hide();
+        $('#otkazKomentar').hide();
+        $.ajax({
+            url: '/api/Korisnik/GetKorisnik',
+            type: 'GET',
+            success: function (data) {
+                var voznje = data;
+                var table = `<thead><tr class="success"><th colspan="8" style="text-align:center">Voznje</th></tr></thead>`;
+                table += `<tbody><tr><th>ID</th><th>Ulica i broj</th><th>Status</th><th>Otkazi</th><th>Izmeni</th><th>Komentarisi</th><th>Korisnicko ime</th><th>Opis</th><th>Ocena</th>`;
+                var row;
+                $(data).each(function (index) {
+                    //var row = $('<tr>').addClass('success').text(data[index].LokacijaDolaskaTaksija.Adresa.UlicaBroj);
+                    //table.append(row);
+
+                    var id = data[index].Id;
+                    var status;
+                    if (data[index].StatusVoznje == 0) {
+                        status = "Kreirana na cekanju";
+                    } else if (data[index].StatusVoznje == 1) {
+                        status = "Formirana";
+                    } else if (data[index].StatusVoznje == 2) {
+                        status = "Obradjena";
+                    } else if (data[index].StatusVoznje == 3) {
+                        status = "Prihvacena";
+                    } else if (data[index].StatusVoznje == 4) {
+                        status = "Otkazana";
+                    } else if (data[index].StatusVoznje == 5) {
+                        status = "Neuspesna";
+                    } else if (data[index].StatusVoznje == 6) {
+                        status = "Uspesna";
+                    } else if (data[index].StatusVoznje == 7) {
+                        status = "U toku";
+                    } else {
+                        status = "Nepoznato";
+                    }
+
+                    table += `<tr><td>${data[index].Id}</td><td> ${data[index].Lokacija.Adresa.UlicaBroj} </td><td> ${status} </td>`;
+                    table += `<td><input id="btnOtkaziVoznju${index}" class="btn btn-success" type="button" value="Otkazi" /></td>`;
+                    table += `<td><input id="btnIzmeniVoznju${index}" class="btn btn-success" type="button" value="Izmeni" /></td>`;
+                    table += `<td><input id="btnKomentarisiVoznju${index}" class="btn btn-success" type="button" value="Komentarisi" /></td>`;
+                    table += `<td>${data[index].Komentar.idKorisnik}</td><td>${data[index].Komentar.Opis}</td><td>${data[index].Komentar.Ocena}</td></tr>`
+                });
+
+
+                $("#tabelaVoznji").html(table);
+
+                $(data).each(function (index) {
+                    var id = data[index].Id;
+                    $('#btnKomentarisiVoznju' + index).click(function () {
+                        $('#izmeniVoznjuKorisnik').delay(300).fadeOut(300);
+                        $('#otkazKomentar').delay(300).fadeIn(300);
+                        $('#izmenaVoznjeTabela').hide();
+
+                        $('#buttonKomentar').click(function () {
+                            let opis = $('#opisKomentar').val();
+                            let ocena = $('#ocenaKomentar').val();
+                            let komentar = {
+                                Opis: `${opis}`,
+                                Ocena: `${ocena}`,
+                                IdVoznje: id
+                            };
+
+                            $.ajax({
+                                url: '/api/Korisnik/PostKomentar',
+                                type: 'POST',
+                                data: JSON.stringify(komentar),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                success: function (data) {
+                                    $('#opisKomentar').val("");
+                                    $('#ocenaKomentar').val("");
+                                    window.location.href = "Index.html";
+                                }
+                            });
+                        })
+                    });
+                })
+
+                $(data).each(function (index) {
+                    var id = data[index].Id;
+                    $('#btnOtkaziVoznju' + index).click(function () {
+                        var broj = index;
+                        var idvoznje = `${data[index].Id}`;
+
+
+                        $.ajax({
+                            url: `/api/Korisnik/` + data[index].Id,
+                            type: 'DELETE',
+                            data: {
+                                id: broj
+                            },
+                            success: function (data) {
+                                $('#izmeniVoznjuKorisnik').delay(300).fadeOut(300);
+                                $('#otkazKomentar').delay(300).fadeIn(300);
+                                $('#izmenaVoznjeTabela').hide();
+                                $('#buttonKomentar').click(function () {
+                                    let opis = $('#opisKomentar').val();
+                                    let ocena = $('#ocenaKomentar').val();
+                                    let komentar = {
+                                        Opis: `${opis}`,
+                                        Ocena: `${ocena}`,
+                                        Id: id
+                                    };
+
+                                    $.ajax({
+                                        url: '/api/Korisnik/PostKomentar',
+                                        type: 'POST',
+                                        data: JSON.stringify(komentar),
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            $('#opisKomentar').val("");
+                                            $('#ocenaKomentar').val("");
+                                            window.location.href = "Index.html";
+                                        }
+                                    });
+                                })
+                            }
+                        });
+                        
+                    });
+
+                    $('#btnIzmeniVoznju' + index).click(function () {
+                       
+                        $('#izmeniVoznjuKorisnik').hide();
+                        $('#modifikujVoznjuKorisnik').addClass("active");
+                        $('#izmenaVoznjeTabela').show();
+
+                        var num = index;
+
+                        $('#btnChange').click(function () {
+
+                            var type;
+                            if ($('#txtTipAuto').is(':checked')) {
+                                type = $('#txtTipAuto').val();
+                            }
+                            else {
+                                type = $('#txtTipKombi').val();
+                            }
+
+                            let adresa = {
+                                UlicaBroj: $('#txtUlicaBroj').val(),
+                                NaseljenoMesto: $('#txtGrad').val(),
+                                PozivniBrojMesta: $('#txtPosta').val()
+                            };
+
+                            let lokacija = {
+                                X: $('#txtKordinataX').val(),
+                                Y: $('#txtKordinataY').val(),
+                                Adresa: adresa
+                            };
+
+                            $.ajax({
+                                url: `/api/Korisnik/` + id,
+                                type: 'PUT',
+                                data: {
+                                    Lokacija: lokacija,
+                                    Automobil: type,
+                                   
+                                },
+                                success: function (data) {
+
+                                }
+                            });
+                        })
+                    })
+                });
+            }
+        });
+    
+    });
+
+
 });

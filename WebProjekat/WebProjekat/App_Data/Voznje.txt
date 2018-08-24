@@ -1,1 +1,2 @@
-﻿0|8/23/2018 1:43:44 PM|11.5|11.3|Vuka Karadzica 106|Sid|22240|Svejedno||0|0||||||0||||||Kreirana
+0|8/24/2018 8:52:31 PM|11.1|11.9|Dr Sime Milosevica 8|Novi Sad|21000|Svejedno|krele|0|0||||||0||||||Kreirana
+1|8/24/2018 8:26:43 AM|10.3|1.5|Gogoljeva 7|Novi Sad|21000|Svejedno|krele|0|0||||||0|re|8/24/2018 3:46:39 PM|krele||7|Otkazana

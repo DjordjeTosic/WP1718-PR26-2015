@@ -32,6 +32,10 @@ namespace Projekat.Models
             string line = "";
             while ((line = sr.ReadLine()) != null)
             {
+                if (line == "" || line == null)
+                {
+                    return;
+                }
                 string[] tokens = line.Split('|');
                 Voznja p = new Voznja(Int32.Parse(tokens[0]), tokens[1], double.Parse(tokens[2]), double.Parse(tokens[3]), tokens[4], tokens[5], tokens[6], tokens[7], tokens[8],
                     double.Parse(tokens[9]), double.Parse(tokens[10]), tokens[11], tokens[12], tokens[13], tokens[14], tokens[15],
