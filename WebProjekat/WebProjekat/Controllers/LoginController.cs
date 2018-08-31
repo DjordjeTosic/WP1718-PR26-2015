@@ -21,6 +21,10 @@ namespace Projekat.Controllers
                 user = new Korisnik();
                 HttpContext.Current.Session["user"] = user;
             }
+            else
+            {
+                return false;
+            }
 
             Dispeceri dispeceri = (Dispeceri)HttpContext.Current.Application["dispeceri"];
             Korisnici korisnici = (Korisnici)HttpContext.Current.Application["korisnici"];

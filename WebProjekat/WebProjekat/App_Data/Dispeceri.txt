@@ -1,2 +1,2 @@
 ﻿1:admin1:1234:Zorz:Papadubi:Muskarac:1122333444555:0648700123:zorz@gmail.com:Dispecer
-2:admin1:1234:Joka:Mia:Muskarac:1122333444555:0648700123:zorz@gmail.com:Dispecer
+2:admin2:0000:Joka:Mia:Muskarac:1122333444555:0648700123:zorz@gmail.com:Dispecer

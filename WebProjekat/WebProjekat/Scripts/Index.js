@@ -66,6 +66,8 @@ $(document).ready(function () {
     $('#izmeniVoznjuKorisnik').hide();
     $('#otkazKomentar').hide();
     $('#izmenaVoznjeTabela').hide();
+    $('#voznjaDispecer').hide();
+    $('#obradiVoznjuDispecer').hide();
 
     $('#logOutKorisnik').click(function () {
         $.ajax({
@@ -100,6 +102,9 @@ $(document).ready(function () {
     });
     $('#dodajVozaca').click(function () {
         $('#dodajVozacaDeo').show();
+        $('#voznjaDispecer').hide();
+        $('#profilDispecera').hide();
+        $('#obradiVoznjuDispecer').hide();
         $('#buttonVozac').click(function () {
             var pol;
 
@@ -182,6 +187,8 @@ $(document).ready(function () {
 
     $('#profilDispecer').click(function () {
         $('#profilDispecera').show(),
+            $('#obradiVoznjuDispecer').hide();
+            $('#voznjaDispecer').hide();
             $('#ProfilKorisnickoImeDispecer').val(profil.KorisnickoIme),
             $('#ProfilEmailDispecer').val(profil.Email),
             $('#ProfilLozinkaDispecer').val(profil.Lozinka),
@@ -577,6 +584,151 @@ $(document).ready(function () {
             }
         });
     
+    });
+
+    $('#dodajVoznjuDispecer').click(function () {
+        $('#voznjaDispecer').show();
+        $('#dodajVozacaDeo').hide();
+        $('#profilDispecera').hide();
+        $('#obradiVoznjuDispecer').hide();
+        $('#buttonVoznjaDispecer').click(function () {
+            let adresaVoznjaDispecer = {
+                UlicaBroj: $('#UlicaBrojVoznjaDispecer').val(),
+                NaseljenoMesto: $('#GradVoznjaDispecer').val(),
+                PozivniBrojMesta: $('#PostaVoznjaDispecer').val()
+            };
+            let lokacijaVoznjaDispecer = {
+                X: $('#KordinataXVoznjaDispecer').val(),
+                Y: $('#KordinataYVoznjaDispecer').val(),
+                Adresa: adresaVoznjaDispecer
+            };
+            var tipVoznjaDispecer;
+            if (($('#TipAutaObicniVoznjaDispecer').is(':checked'))) {
+                tipVoznjaDispecer = $('#TipAutaObicniVoznjaDispecer').val();
+                alert("tacno!");
+            }
+            else if (($('#KombiAutoVoznjaDispecer').is(':checked'))) {
+                tipVoznjaDispecer = $('#KombiAutoVoznjaDispecer').val();
+            }
+
+
+        
+            $.ajax({
+                url: '/api/Dispecer/PostVoznja',
+                type: 'POST',
+                data: {
+                    
+                    Lokacija: lokacijaVoznjaDispecer,
+                    Automobil: tipVoznjaDispecer,
+                    idDispecer: localStorage.getItem("logged")
+                },
+            });
+        });
+
+    });
+
+    $('#obradiVoznjeDispecer').click(function () {
+        $('#voznjaDispecer').hide();
+        $('#dodajVozacaDeo').hide();
+        $('#profilDispecera').hide();
+        $('#obradiVoznjuDispecer').show();
+
+        $.ajax({
+            url: '/api/Vozac',
+            type: 'GET',
+            success: function (data) {
+                var slobodniVozaci;
+                slobodniVozaci = data;
+
+                
+                var statusi = [];
+
+                $.ajax({
+                    url: '/api/Voznja',
+                    type: 'GET',
+                    success: function (data) {
+                        var voznje;
+                        voznje = data;
+
+                        var table = `<thead><tr class="success"><th colspan="8" style="text-align:center">Voznje</th></tr></thead>`;
+                        table += `<tbody><tr><th>ID</th><th>Ulica i broj</th><th>Status</th><th>Slobodni Vozaci</th><th>Obradi</th><th>Korisnicko ime</th><th>Opis</th><th>Ocena</th></tr>`;
+                        var row;
+                        $(data).each(function (index) {
+
+
+                            statusi[index] = data[index].StatusVoznje;
+                            var status;
+                            if (data[index].StatusVoznje == 0) {
+                                status = "Kreirana na cekanju";
+                            } else if (data[index].StatusVoznje == 1) {
+                                status = "Formirana";
+                            } else if (data[index].StatusVoznje == 2) {
+                                status = "Obradjena";
+                            } else if (data[index].StatusVoznje == 3) {
+                                status = "Prihvacena";
+                            } else if (data[index].StatusVoznje == 4) {
+                                status = "Otkazana";
+                            } else if (data[index].StatusVoznje == 5) {
+                                status = "Neuspesna";
+                            } else if (data[index].StatusVoznje == 6) {
+                                status = "Uspesna";
+                            } else if (data[index].StatusVoznje == 7) {
+                                status = "U toku";
+                            } else {
+                                status = "Nepoznato";
+                            }
+
+                            table += `<tr><td>${data[index].Id}</td><td> ${data[index].Lokacija.Adresa.UlicaBroj} </td><td> ${status} </td>`;
+
+                            table += `<td><select id="slobodniVozaciDispecer${index}">`
+
+                            //alert(slobodniVozaci[0].KorisnickoIme);
+                            $(slobodniVozaci).each(function (indeks) {
+                                table += `<option value="${slobodniVozaci[indeks].KorisnickoIme}">${slobodniVozaci[indeks].KorisnickoIme}</option>`
+                            });
+
+                            table += `</select></td>`
+
+                            
+                            table += `<td><input id="btnObradiVoznjuDispecer${index}" class="btn btn-success" type="button" value="Obradi" /></td>`;
+                            table += `<td>${data[index].Komentar.idKorisnik}</td><td>${data[index].Komentar.Opis}</td><td>${data[index].Komentar.Ocena}</td></tr></tbody>`
+                        });
+                        $("#tabelaVoznjiDispecer").html(table);
+
+                        $(data).each(function (index) {
+                            $('#btnObradiVoznjuDispecer' + index).click(function () {
+                                var num = index;
+                                var vozac = `${$('#slobodniVozaciDispecer' + index).val()}`;
+                                var status2 = statusi[index];
+                                alert("jebi se");
+                                $.ajax({
+                                    
+                                    url: `/api/Dispecer/` + index,
+                                    type: 'PUT',
+                                    
+                                    data: {
+                                        idVozac: vozac,
+                                        StatusVoznje: status2
+                                    },
+                                    success: function (data) {
+                                        if (data) {
+                                            alert("Odradio");
+                                            window.location.href = "Index.html";
+                                        } else {
+                                            alert("Ovu voznju nije moguce obraditi ili nema slobodnih vozaca");
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    }
+
+                });
+            }
+
+        });
+        
+
     });
 
 

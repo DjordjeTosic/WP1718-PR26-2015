@@ -244,6 +244,8 @@
                         <li><a href="Index.html"><i class="fas fa-"></i> Home</a></li>
                         <li id="profilDispecer"><a href="#">My Profile</a></li>
                         <li id="dodajVozaca"><a href="#">Dodaj vozaca</a></li>
+                        <li id="dodajVoznjuDispecer"><a href="#">Dodaj voznju</a></li>
+                        <li id="obradiVoznjeDispecer"><a href="#">Obradi voznje</a></li>
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
                         <!--<li id="logInDispecer"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
@@ -414,6 +416,62 @@
 
     </div>
 
+    <div id="voznjaDispecer">
+        <div class="container" style="padding-top:30px">
+            <div class="well">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Lokacija vozaca</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Kordinata X</td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="KordinataXVoznjaDispecer" name="kordinatax" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kordinata Y</td>
+                        <td><input type="text" placeholder="Kordinata Y" class="form-control" id="KordinataYVoznjaDispecer" name="kordinatay" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ulica i broj</td>
+                        <td><input type="text" placeholder="Ulica i broj" class="form-control" id="UlicaBrojVoznjaDispecer" name="ulicavozac" /></td>
+                    </tr>
+                    <tr>
+                        <td>Grad</td>
+                        <td><input type="text" placeholder="Grad" class="form-control" id="GradVoznjaDispecer" name="grad" /></td>
+                    </tr>
+                    <tr>
+                        <td>Postanski broj</td>
+                        <td><input type="text" placeholder="Postanski broj" class="form-control" id="PostaVoznjaDispecer" name="posta" /></td>
+                    </tr>
+                    <tr>
+                        <td>Tip Vozila</td>
+                        <td>
+                            <input type="radio" id="TipAutaObicniVoznjaDispecer" value="Putnicki" name="Tip"> Putnicki &nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="KombiAutoVoznjaDispecer" name="Tip" value="Kombi"> Kombi
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonVoznjaDispecer" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="obradiVoznjuDispecer">
+        <div class="well">
+            <table id="tabelaVoznjiDispecer" class="table table-bordered" border="1"></table>
+        </div>
+    </div>
+
 
 
 
@@ -524,7 +582,7 @@
                     </thead>
                     <tr style="display:none">
                         <td>Korisnicko ime</td>
-                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="LokacijaKorisnickoImeVozac" name="kordinatax" /></td>
+                        <td><input type="text" placeholder="Kordinata X" class="form-control" id="LokacijaKorisnickoImeVozac" name="njet" /></td>
                     </tr>
                     <tr>
                         <td>Kordinata X</td>

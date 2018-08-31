@@ -41,7 +41,7 @@ namespace WebProjekat.Controllers
             string line = String.Empty;
             line = korisnik.Id.ToString() + ':' + korisnik.KorisnickoIme + ':' + korisnik.Lozinka + ':' + korisnik.Ime + ':'
                 + korisnik.Prezime + ':' + korisnik.Pol + ':' + korisnik.JMBG + ':' + korisnik.KontaktTelefon + ':'
-                + korisnik.Email + ':' + korisnik.Uloga + Environment.NewLine;
+                + korisnik.Email + ':' + korisnik.Uloga + Environment.NewLine; 
             if(!File.Exists(path))
             {
                 File.WriteAllText(path, line);

@@ -13,6 +13,27 @@ namespace WebProjekat.Controllers
 {
     public class VozacController : ApiController
     {
+        [HttpGet]
+        public List<Vozac> Get()
+        {
+            Vozaci users = HttpContext.Current.Application["vozaci"] as Vozaci;
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            List<Vozac> slobodni = new List<Vozac>();
+
+            foreach (Vozac v in users.list)
+            {
+                if (v.Zauzet == Enums.Zauzet.NE)
+                    slobodni.Add(v);
+            }
+
+            return slobodni;
+        }
         [HttpPost]
         //[Route("api/Vozac/PostIzmena")]
         public bool Post([FromBody]Vozac vozac)
@@ -40,7 +61,7 @@ namespace WebProjekat.Controllers
                     item.Prezime + ':' + item.Pol + ':' + item.JMBG + ':' + item.KontaktTelefon + ':' + item.Email + ':' + item.Uloga +
                     ':' + item.Lokacija.X.ToString() + ':' + item.Lokacija.Y.ToString() + ':' + item.Lokacija.Adresa.UlicaBroj + ':' + item.Lokacija.Adresa.NaseljenoMesto +
                     ':' + item.Lokacija.Adresa.PozivniBrojMesta + ':' + item.Automobil.Broj + ':' + item.Automobil.Godiste + ':' + item.Automobil.Registracija
-                     + ':' + item.Automobil.Tip + ':' + item.Zauzet + ':' + item.Ban + Environment.NewLine;
+                     + ':' + item.Automobil.Tip + ':' + item.Zauzet + ':' + item.Ban;
 
                     var file = File.Open(path, FileMode.Open);
                     file.Close();
@@ -82,7 +103,7 @@ namespace WebProjekat.Controllers
                     item.Prezime + ':' + item.Pol + ':' + item.JMBG + ':' + item.KontaktTelefon + ':' + item.Email + ':' + item.Uloga +
                     ':' + item.Lokacija.X.ToString() + ':' + item.Lokacija.Y.ToString() + ':' + item.Lokacija.Adresa.UlicaBroj + ':' + item.Lokacija.Adresa.NaseljenoMesto +
                     ':' + item.Lokacija.Adresa.PozivniBrojMesta + ':' + item.Automobil.Broj + ':' + item.Automobil.Godiste + ':' + item.Automobil.Registracija
-                     + ':' + item.Automobil.Tip + ':' + item.Zauzet + ':' + item.Ban + Environment.NewLine;
+                     + ':' + item.Automobil.Tip + ':' + item.Zauzet + ':' + item.Ban;
 
                     var file = File.Open(path, FileMode.Open);
                     file.Close();

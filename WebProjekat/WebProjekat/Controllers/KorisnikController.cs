@@ -105,7 +105,7 @@ namespace WebProjekat.Controllers
 
                     string line = item.Id.ToString() + ':' + item.KorisnickoIme + ':' + item.Lozinka + ':' + item.Ime + ':'
                     + item.Prezime + ':' + item.Pol + ':' + item.JMBG + ':' + item.KontaktTelefon + ':'
-                    + item.Email + ':' + item.Uloga + Environment.NewLine;
+                    + item.Email + ':' + item.Uloga;
 
 
                     var file = File.Open(path, FileMode.Open);
@@ -310,7 +310,7 @@ namespace WebProjekat.Controllers
 
 
                 //string path = @"C:\Users\Coa\Desktop\NovaVerzija\WebAPI\WebAPI\App_Data\voznje.txt";
-                string path = "~/App_Data/voznje.txt";
+                string path = "~/App_Data/Voznje.txt";
                 path = HostingEnvironment.MapPath(path);
 
 
@@ -319,8 +319,7 @@ namespace WebProjekat.Controllers
                 v.Lokacija.Adresa.UlicaBroj + '|' + v.Lokacija.Adresa.NaseljenoMesto + '|' + v.Lokacija.Adresa.PozivniBrojMesta + '|' + v.Automobil + '|' +
                 v.idKorisnik + '|' + v.Odrediste.X + '|' + v.Odrediste.Y + '|' + v.Odrediste.Adresa.UlicaBroj + '|' + v.Odrediste.Adresa.NaseljenoMesto + '|' + v.Odrediste.Adresa.PozivniBrojMesta + '|' +
                 v.idDispecer + '|' + v.idVozac + '|' + v.Iznos.ToString() + '|' + v.Komentar.Opis + '|' + v.Komentar.DatumObjave + '|' + v.Komentar.idKorisnik + '|' + v.Komentar.idVoznja + '|' +
-                v.Komentar.Ocena + '|' + v.StatusVoznje +  Environment.NewLine;
-
+                v.Komentar.Ocena + '|' + v.StatusVoznje + Environment.NewLine;
 
                 if (!File.Exists(path))
                 {
@@ -385,7 +384,7 @@ namespace WebProjekat.Controllers
                             ride.Lokacija.Adresa.UlicaBroj = v.Lokacija.Adresa.UlicaBroj;
 
                             
-                            string path = "~/App_Data/voznje.txt";
+                            string path = "~/App_Data/Voznje.txt";
                             path = HostingEnvironment.MapPath(path);
                             string line = String.Empty;
 

@@ -1,2 +1,6 @@
-0|8/24/2018 8:52:31 PM|11.1|11.9|Dr Sime Milosevica 8|Novi Sad|21000|Svejedno|krele|0|0||||||0||||||Kreirana
+0|8/24/2018 8:52:31 PM|11.1|11.9|Dr Sime Milosevica 8|Novi Sad|21000|Svejedno|krele|0|0||||admin1|novi|0||||||Prihvacena
 1|8/24/2018 8:26:43 AM|10.3|1.5|Gogoljeva 7|Novi Sad|21000|Svejedno|krele|0|0||||||0|re|8/24/2018 3:46:39 PM|krele||7|Otkazana
+2|8/25/2018 8:48:57 PM|94.5|19.4|Maksima Gorkog 6|Sombor|22100|Svejedno|admin2|0|0||||admin2|suma|0||||||Prihvacena
+3|8/25/2018 8:53:53 PM|12.5|10|Bulevar Cara Lazara 8|Novi Sad|21000|Svejedno|admin1|0|0||||admin1|Kimi|0||||||Prihvacena
+4|8/25/2018 9:06:03 PM|11.9|88|Brace Ribnikara 9|Novi Sad|21000|Kombi|admin1|0|0||||admin1|luja|0||||||Prihvacena
+5|8/27/2018 8:43:04 PM|312.4|123.4|asa|bassa|21312|Putnicki|admin1|0|0||||admin1|novi|0||||||Prihvacena
