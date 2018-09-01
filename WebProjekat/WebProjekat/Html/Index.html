@@ -103,7 +103,7 @@
                         </tr>
                         <tr class="success">
                             <td colspan="2">
-                                <input id="buttonKomentar" class="form-control btn btn-success" type="button" value="Save Comment" />
+                                <input id="buttonKomentar" class="form-control btn btn-success" type="button" value="Sacuvaj komentar" />
                             </td>
                         </tr>
                     </tbody>
@@ -214,7 +214,7 @@
 
                     <tr>
                         <td colspan="2">
-                            <input type="submit" id="buttonKorisnik" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                            <input type="submit" id="buttonKorisnik" style="background-color:chartreuse" class="form-control" value="Izmeni podatke" />
                         </td>
                     </tr>
                 </table>
@@ -310,7 +310,7 @@
 
                     <tr>
                         <td colspan="2">
-                            <input type="submit" id="buttonDispecer" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                            <input type="submit" id="buttonDispecer" style="background-color:chartreuse" class="form-control" value="Izmeni podatke" />
                         </td>
                     </tr>
                 </table>
@@ -405,7 +405,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Dodaj vozaca" />
                         </td>
                     </tr>
                 </table>
@@ -455,7 +455,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input type="submit" id="buttonVoznjaDispecer" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                            <input type="submit" id="buttonVoznjaDispecer" style="background-color:chartreuse" class="form-control" value="Sacuvaj voznju" />
                         </td>
                     </tr>
                 </table>
@@ -495,6 +495,7 @@
                         <li><a href="Index.html"><i class="fas fa-"></i> Home</a></li>
                         <li id="profilVozac"><a href="#">My Profile</a></li>
                         <li id="lokacijaVozac"><a href="#">Trenutna lokacija</a></li>
+                        <li id="statusVoznjiVozac"><a href="#">Izmeni status</a></li>
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
                         <!--<li id="logInVozac"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
@@ -559,7 +560,7 @@
 
                     <tr>
                         <td colspan="2">
-                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                            <input type="submit" id="buttonVozac" style="background-color:chartreuse" class="form-control" value="Izmeni podatke" />
                         </td>
                     </tr>
                 </table>
@@ -568,6 +569,97 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="container">
+        <div id="vozacStatus">
+            <div class="well">
+                <table id="tabelaVoznjiVozac" class="table table-bordered" border="1"></table>
+            </div>
+        </div>
+    </div>
+
+    <div id="neuspesnaVoznjaKomentar">
+        <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">
+            <div class="well">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">
+                                Ocena
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ocena</td>
+                            <td><input type="number" min="0" max="10" class="form-control" id="txtCommentNeuspesnaVoznjaGrade" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Opis</td>
+                            <td><textarea rows="4" cols="170" id="txtCommentNeuspesnaVoznjaDescription"></textarea> </td>
+                        </tr>
+                        <tr class="success">
+                            <td colspan="2">
+                                <input id="btnSaveNeuspesnaVoznjaComment" class="form-control btn btn-success" type="button" value="Sacuvaj Komentar" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!--*************************************************************************************************************************-->
+        <!--*************************************************************************************************************************-->
+    </div>
+
+    <div class="container">
+        <div id="vozacOdrediste">
+            <div class="well">
+                <table id="tabelaOdredisteVozac" class="table table-bordered" border="1">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">
+                                Odrediste
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Koordinata X</td>
+                            <td><input type="text" class="form-control" id="txtCoordinateXDestination" placeholder="Koordinata X" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Koordinata Y</td>
+                            <td><input type="text" class="form-control" id="txtCoordinateYDestination" placeholder="Koordinata Y" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Ulica i broj</td>
+                            <td><input type="text" class="form-control" id="txtStreetNumDestination" placeholder="Ulica i broj" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Grad</td>
+                            <td><input type="text" class="form-control" id="txtCityDestination" placeholder="Grad" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Postanski broj</td>
+                            <td><input type="text" class="form-control" id="txtZipCodeDestination" placeholder="Postanski broj" /> </td>
+                        </tr>
+                        <tr>
+                            <td>Iznos</td>
+                            <td><input type="number" class="form-control" id="txtAmountDestination" placeholder="Iznos" /> </td>
+                        </tr>
+
+                        <tr class="success">
+                            <td colspan="2">
+                                <input id="btnSaveDestination" class="form-control btn btn-success" type="button" value="Sacuvaj Lokaciju" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div id="lokacijaVozaca">

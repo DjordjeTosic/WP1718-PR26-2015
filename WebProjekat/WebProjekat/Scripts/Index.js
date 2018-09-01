@@ -68,6 +68,9 @@ $(document).ready(function () {
     $('#izmenaVoznjeTabela').hide();
     $('#voznjaDispecer').hide();
     $('#obradiVoznjuDispecer').hide();
+    $('#vozacStatus').hide();
+    $('#neuspesnaVoznjaKomentar').hide();
+    $('#vozacOdrediste').hide();
 
     $('#logOutKorisnik').click(function () {
         $.ajax({
@@ -237,6 +240,9 @@ $(document).ready(function () {
     $('#profilVozac').click(function () {
         $('#profilVozaca').show(),
             $('#lokacijaVozaca').hide(),
+            $('#vozacStatus').hide(),
+            $('#neuspesnaVoznjaKomentar').hide();
+        $('#vozacOdrediste').hide();
           
             $('#ProfilKorisnickoImeVozac').val(profil.KorisnickoIme),
             $('#ProfilEmailVozac').val(profil.Email),
@@ -338,6 +344,9 @@ $(document).ready(function () {
     $('#lokacijaVozac').click(function () {
         $('#lokacijaVozaca').show(),
             $('#profilVozaca').hide(),
+            $('#vozacStatus').hide(),
+            $('#vozacOdrediste').hide();
+            $('#neuspesnaVoznjaKomentar').hide();
             $('#LokacijaUlicaVozac').val(profil.Lokacija.Adresa.UlicaBroj),
             $('#LokacijaGradVozac').val(profil.Lokacija.Adresa.NaseljenoMesto),
             $('#LokacijaPostaVozac').val(profil.Lokacija.Adresa.PozivniBrojMesta),
@@ -367,6 +376,207 @@ $(document).ready(function () {
         });
         
 
+    });
+
+    $('#statusVoznjiVozac').click(function () {
+        $('#lokacijaVozaca').hide(),
+            $('#profilVozaca').hide(),
+            $('#vozacStatus').show(),
+            $('#neuspesnaVoznjaKomentar').hide();
+        $('#vozacOdrediste').hide();
+
+            $.ajax({
+                url: '/api/Voznja/GetVozacoveVoznje',
+                type: 'GET',
+                success: function (data) {
+                    alert("Upao");
+                    var voznje = data;
+
+                    var table = `<thead><tr class="success"><th colspan="9" style="text-align:center">Voznje</th></tr></thead>`;
+                    table += `<tbody><tr><th>ID</th><th>Ulica i broj</th><th>Status</th><th>Uspesno/Neuspesno</th><th>Obradi</th><th>Zavrsi</th><th>Korisnicko ime</th><th>Opis</th><th>Ocena</th>`;
+                    var row;
+
+                    $(data).each(function (index) {
+                        //var row = $('<tr>').addClass('success').text(data[index].LokacijaDolaskaTaksija.Adresa.UlicaBroj);
+                        //table.append(row);
+
+                        var status;
+                        if (data[index].StatusVoznje == 0) {
+                            status = "Kreirana na cekanju";
+                        } else if (data[index].StatusVoznje == 1) {
+                            status = "Formirana";
+                        } else if (data[index].StatusVoznje == 2) {
+                            status = "Obradjena";
+                        } else if (data[index].StatusVoznje == 3) {
+                            status = "Prihvacena";
+                        } else if (data[index].StatusVoznje == 4) {
+                            status = "Otkazana";
+                        } else if (data[index].StatusVoznje == 5) {
+                            status = "Neuspesna";
+                        } else if (data[index].StatusVoznje == 6) {
+                            status = "Uspesna";
+                        } else if (data[index].StatusVoznje == 7) {
+                            status = "U toku";
+                        } else {
+                            status = "Nepoznato";
+                        }
+
+                        table += `<tr><td>${data[index].Id}</td><td> ${data[index].Lokacija.Adresa.UlicaBroj} </td><td> ${status} </td>`;
+
+
+                        table += `<td><select id="cmbStatus${index}"><option value="Uspesna">Uspesna</option><option value="Neuspesna">Neuspesna</option></select></td>`;
+
+
+                        table += `<td><input id="btnObradiVoznjuVozac${index}" class="btn btn-success" type="button" value="Obradi" /></td>`;
+                        table += `<td><input id="btnZavrsiVoznjuVozac${index}" class="btn btn-success" type="button" value="Zavrsi" /></td>`;
+
+                        table += `<td>${data[index].Komentar.idKorisnik}</td><td>${data[index].Komentar.Opis}</td><td>${data[index].Komentar.Ocena}</td></tr>`
+                    });
+
+                    $("#tabelaVoznjiVozac").html(table);
+                    $(data).each(function (index) {
+                        $('#btnObradiVoznjuVozac' + index).click(function () {
+                            var num = index;
+                            var id = `${data[index].Id}`;
+                            var status = `${$('#cmbStatus' + index).val()}`;
+                            var vozac = `${data[index].idVozac}`;
+                            var voznja = {
+                                Id: id,
+                                idVozac: vozac,
+                                StatusVoznje: status
+                            }
+                            $.ajax({
+                                url: `/api/Status/` + id,
+                                type: 'PUT',
+                                data: JSON.stringify(voznja),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data) {
+                                        alert("Odradio apdejt voznje");
+                                        $('#vozacStatus').hide();
+                                        $('#neuspesnaVoznjaKomentar').hide();
+                                        $('#vozacOdrediste').show();
+
+                                        $.ajax({
+                                            url: '/api/voznja/getstatus/' + id,
+                                            type: 'GET',
+                                            success: function (data) {
+                                                if (!data) {
+                                                    alert("Ova voznja je vec obradjena, ne moze se obraditi ponovo!");
+                                                    window.location.href = "Index.html";
+                                                }
+                                            }
+                                        });
+
+                                        $('#btnSaveDestination').click(function () {
+                                            let adresa = {
+                                                UlicaBroj: `${$('#txtStreetNumDestination').val()}`,
+                                                NaseljenoMesto: `${$('#txtCityDestination').val()}`,
+                                                PozivniBroj: `${$('#txtZipCodeDestination').val()}`
+                                            }
+
+                                            let lokacija = {
+                                                X: `${$('#txtCoordinateXDestination').val()}`,
+                                                Y: `${$('#txtCoordinateYDestination').val()}`,
+                                                Adresa: adresa
+                                            }
+
+                                            var ride = {
+                                                Id: id,
+                                                idVozac: vozac,
+                                                Odrediste: lokacija,
+                                                Iznos: `${$('#txtAmountDestination').val()}`
+                                            }
+
+                                            $.ajax({
+                                                url: '/api/Status/PutVoznjauspesno/' + index,
+                                                type: 'PUT',
+                                                data: JSON.stringify(ride),
+                                                contentType: 'application/json; charset=utf-8',
+                                                dataType: 'json',
+                                                success: function (data) {
+                                                    window.locat.href = "Index.html";
+                                                }
+                                            });
+                                        });
+
+                                    } else {
+
+                                        $.ajax({
+                                            url: '/api/voznja/getstatus/' + id,
+                                            type: 'GET',
+                                            success: function (data) {
+                                                if (!data) {
+                                                    alert("Ova voznja je vec obradjena");
+                                                    window.location.href = "Index.html";
+                                                }
+                                            }
+                                        });
+                                        $('#vozacStatus').hide();
+                                        $('#neuspesnaVoznjaKomentar').show();
+                                        $('#vozacOdrediste').hide();
+
+                                        $('#btnSaveNeuspesnaVoznjaComment').click(function () {
+                                            let opis = $('#txtCommentNeuspesnaVoznjaDescription').val();
+                                            let ocena = $('#txtCommentNeuspesnaVoznjaGrade').val();
+                                            let komentar = {
+                                                Opis: `${opis}`,
+                                                Ocena: `${ocena}`,
+                                                IdVoznje: `${index}`
+                                            };
+
+                                            $.ajax({
+                                                url: '/api/status/PutVoznjaNeuspesno/' + id,
+                                                type: 'PUT',
+                                                data: JSON.stringify(komentar),
+                                                contentType: 'application/json; charset=utf-8',
+                                                dataType: 'json',
+                                                success: function (data) {
+                                                    $('#txtCommentNeuspesnaVoznjaDescription').val("");
+                                                    $('#txtCommentNeuspesnaVoznjaGrade').val("");
+                                                    window.location.href = "Index.html";
+                                                }
+                                            });
+                                        })
+                                    }
+                                }
+                            });
+                        });
+                    });
+
+                    $(data).each(function (index) {
+                        $('#btnZavrsiVoznjuVozac' + index).click(function () {
+
+                            var num = index;
+                            var id = `${data[index].Id}`;
+                            var status = `${$('#cmbStatus' + index).val()}`;
+                            var vozac = `${data[index].IdVozac}`;
+
+                            var voznja = {
+                                Id: id,
+                                IdVozac: vozac,
+                                StatusVoznje: status
+                            }
+
+                            $.ajax({
+                                url: `/api/Voznja/` + id,
+                                type: 'PUT',
+                                data: JSON.stringify(voznja),
+                                contentType: 'application/json; charset=utf-8',
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data) {
+                                        alert("Zavrsio");
+                                    } else {
+                                        alert("Neuspelo zavrsavanje");
+                                    }
+                                }
+                            });
+                        });
+                    })
+                }
+            });
     });
     $('#voznjaKorisnik').click(function () {
         $('#dodavanjeVoznje').show();

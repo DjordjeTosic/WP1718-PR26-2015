@@ -1,5 +1,5 @@
 0:suma:suma:Mihail:Sumaher:Zenski:3213123:123213:suma@gmail.com:Vozac:0:0:Gogoljeva 5:Sid:22240:0:1988:RE-312:Kombi:DA:NE
 1:Kimi:kimi:Kimi:Raikonen:Zenski:23132112:1233:kimi@gmail.com:Vozac:44:55:Neka tamo 98:Sid:22232:1:1987:SI-456:Svejedno:DA:NE
-2:luja:luja:Luis:Hamilton:Zenski:2321142:123:luja@gmail.com:Vozac:34:46:Cara Lazara 23:Sid:22230:2:1983:SI-ME-423:Svejedno:DA:NE
+2:luja:luja:Luis:Hamilton:Zenski:2321142:123:luja@gmail.com:Vozac:34:46:Cara Lazara 23:Sid:22230:2:1983:SI-ME-423:Svejedno:NE:NE
 3:novi:novi:novi:novi:Zenski:123321:12322:novi:Vozac:0:0:asdda:nasd:123321:3:123:aasd:Kombi:DA:NE
 4:mile:mile:Mile:Mile:Zenski:12312214:123312:miletaxi@gmail.com:Vozac:149.5:11.8:Miletova 8:Novi Sad:21211:4:1978:SI-312:Putnicki:NE:NE
