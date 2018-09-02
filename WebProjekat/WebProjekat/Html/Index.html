@@ -66,6 +66,7 @@
                         <li id="profilKorisnik"><a href="#">My Profile</a></li>
                         <li id="voznjaKorisnik"><a href="#">Dodaj Voznju</a></li>
                         <li id="voznjaIzmena"><a href="#">Izmeni Voznju</a></li>
+                        <li id="searchKorisnik"><a href="#">Pretrazi voznje</a></li>
 
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
@@ -80,6 +81,135 @@
 
 
     </div>
+
+    <div id="searchRidesKorisnik">
+        <div class="well">
+            <table id="sortVoznji">
+                <tr>
+                    <td>
+                        <select id="valueZaSort">
+                            <option value="Datum">Datum</option>
+                            <option value="Ocena">Ocena</option>
+                        </select>
+                    </td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>From: </th>
+                    <td><input type="date" id="dateSearchFrom" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>To: </th>
+                    <td><input type="date" id="dateSearchTo" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>From: </th>
+                    <td><input type="number" id="gradeSearchFrom" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>To: </th>
+                    <td><input type="number" id="gradeSearchTo" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>From: </th>
+                    <td><input type="number" id="priceSearchFrom" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>To: </th>
+                    <td><input type="number" id="priceSearchTo" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" id="btnSort" value="Sort" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <td><input type="button" id="btnSearchDate" value="Search by Date" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <td><input type="button" id="btnSearchGrade" value="Search by Grade" /></td>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                    <td><input type="button" id="btnSearchPrice" value="Search by Price" /></td>
+                </tr>
+            </table>
+
+            <hr />
+
+            <table id="tabelaSort" class="table table-bordered" border="1"></table>
+
+            <table id="tabelaSearch" class="table table-bordered" border="1"></table>
+
+            <table id="tabelaFiltracija" class="table table-bordered" border="1"></table>
+
+
+            <hr />
+            <div class="container">
+                <table id="filtracijaVoznji">
+                    <tr>
+                        <td>
+                            <select id="statusiVoznjiZaFiltraciju">
+                                <option value="Kreirana_Na_Cekanju">Kreirana na cekanju</option>
+                                <option value="Formirana">Formirana</option>
+                                <option value="Obradjena">Obradjena</option>
+                                <option value="Prihvacena">Prihvacena</option>
+                                <option value="Otkazana">Otkazana</option>
+                                <option value="Neuspesna">Neuspesna</option>
+                                <option value="Uspesna">Uspesna</option>
+                                <option value="U_Toku">U toku</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr><td><input type="button" id="btnFiltracija" value="Filtriraj" /></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+    
 
     <div id="otkazKomentar">
         <div class="col-md-10 col-md-offset-1" style="padding-top:70px;">

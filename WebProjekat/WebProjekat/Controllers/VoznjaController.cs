@@ -59,6 +59,31 @@ namespace WebProjekat.Controllers
         }
 
         [HttpGet]
+        [Route("api/Voznja/GetKorisnikoveVoznje")]
+        public List<Voznja> GetKorisnikoveVoznje()
+        {
+            Korisnici users = HttpContext.Current.Application["korisnici"] as Korisnici;
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            foreach(Korisnik k in users.list)
+            {
+                if(user.KorisnickoIme != null && user.KorisnickoIme!= "" && user.KorisnickoIme == k.KorisnickoIme)
+                {
+                    return k.voznjeKorisnika;
+                }
+
+            }
+
+
+            return new List<Voznja>();
+        }
+
+        [HttpGet]
         [Route("api/voznja/getstatus/{id:int}")]
         public bool GetStatus(int id)
         {

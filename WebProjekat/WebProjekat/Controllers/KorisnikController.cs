@@ -54,6 +54,84 @@ namespace WebProjekat.Controllers
             Vozaci vozaci = (Vozaci)HttpContext.Current.Application["vozaci"];
             Voznje voznje = (Voznje)HttpContext.Current.Application["voznje"];
 
+            List<Voznja> search = HttpContext.Current.Session["search"] as List<Voznja>;
+
+            if (search == null)
+            {
+                search = new List<Voznja>();
+                HttpContext.Current.Session["search"] = search;
+            }
+
+            List<Korisnik> searchUsers = HttpContext.Current.Session["searchUsers"] as List<Korisnik>;
+
+            if (searchUsers == null)
+            {
+                searchUsers = new List<Korisnik>();
+                HttpContext.Current.Session["searchUsers"] = searchUsers;
+            }
+
+            //*****************************************************************************************************************
+
+            foreach (Korisnik k in users.list)
+            {
+                if (k.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    HttpContext.Current.Session["search"] = k.voznjeKorisnika;
+                }
+            }
+
+
+            foreach (Dispecer d in dispeceri.list)
+            {
+                if (d.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    List<Voznja> retVal = new List<Voznja>();
+
+                    foreach (Voznja v in voznje.list)
+                        retVal.Add(v);
+
+                    HttpContext.Current.Session["search"] = retVal;
+                }
+            }
+
+
+            foreach (Vozac v in vozaci.list)
+            {
+                if (v.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    List<Voznja> retVal = new List<Voznja>();
+                    retVal = v.voznjeKorisnika;
+                    foreach (Voznja ride in voznje.list)
+                    {
+                        if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana)
+                        {
+                            retVal.Add(ride);
+                        }
+                    }
+
+                    HttpContext.Current.Session["search"] = retVal;
+                }
+            }
+
+            foreach (Dispecer d in dispeceri.list)
+            {
+                if (d.KorisnickoIme == korisnik.KorisnickoIme)
+                {
+                    List<Korisnik> retVal = new List<Korisnik>();
+                    foreach (Korisnik k in users.list)
+                    {
+                        retVal.Add(k);
+                    }
+                    foreach (Vozac v in vozaci.list)
+                    {
+                        retVal.Add(v);
+                    }
+
+                    HttpContext.Current.Session["searchUsers"] = retVal;
+                }
+            }
+
+
             foreach (var item in users.list)
             {
                 if (korisnik.KorisnickoIme == item.KorisnickoIme)
