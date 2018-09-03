@@ -8,6 +8,15 @@
     <link href="../Content/style.css" rel="stylesheet" />
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrjeABCsOwW1rhi7eW6_b_fWF8OK2HeiA&callback=myMap" async defer></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+        #map {
+            height: 300px;
+            width: 100%;
+        }
+    </style>
 
 </head>
 <body>
@@ -67,7 +76,6 @@
                         <li id="voznjaKorisnik"><a href="#">Dodaj Voznju</a></li>
                         <li id="voznjaIzmena"><a href="#">Izmeni Voznju</a></li>
                         <li id="searchKorisnik"><a href="#">Pretrazi voznje</a></li>
-
                     </ul>
                     <ul class="navbar-nav nav navbar-right">
                         <!--<li id="logInKorisnik"><a class="active" href="Login.html">Log in &nbsp;<i class="fas fa-user"></i></a></li>-->
@@ -206,7 +214,7 @@
 
 
 
-
+    <div class="container"><div id="map"></div></div>
 
 
 
@@ -390,6 +398,8 @@
 
 
     </div>
+
+   
 
     <div id="profilDispecera">
         <div class="container" style="padding-top:30px">

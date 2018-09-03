@@ -1,4 +1,6 @@
-﻿
+﻿var latitude;
+var longitude;
+let fulAdresa = '';
 $(document).ready(function () {
     
 
@@ -75,6 +77,7 @@ $(document).ready(function () {
     $('#searchRidesDispecer').hide();
     $('#neprihvaceneVoznje').hide();
     $('#searchRidesVozac').hide();
+    $('#map').hide();
 
     $('#logOutKorisnik').click(function () {
         $.ajax({
@@ -113,9 +116,11 @@ $(document).ready(function () {
         $('#profilDispecera').hide();
         $('#searchRidesDispecer').hide();
         $('#obradiVoznjuDispecer').hide();
+        $('#map').show();
+        myMap();
         $('#buttonVozac').click(function () {
             var pol;
-
+            let niz = fulAdresa.split(',');
             var isPol;
             var isAuto;
             isPol = $('#MuskoVozac').is(':checked');
@@ -142,13 +147,13 @@ $(document).ready(function () {
             };
 
             let adresa = {
-                UlicaBroj: $('#UlicaVozac').val(),
-                NaseljenoMesto: $('#GradVozac').val(),
+                UlicaBroj: `${niz[2]}`,
+                NaseljenoMesto: `${niz[3]}`,
                 PozivniBrojMesta: $('#PostaVozac').val()
             };
             let lokacija = {
-                X: $('#KordinataXVozac').val(),
-                Y: $('#KordinataYVozac').val(),
+                X: `${niz[0]}`,
+                Y: `${niz[1]}`,
                 Adresa: adresa
             };
 
@@ -197,6 +202,7 @@ $(document).ready(function () {
         $('#profilDispecera').show(),
             $('#obradiVoznjuDispecer').hide();
         $('#voznjaDispecer').hide();
+        $('#map').hide();
         $('#searchRidesDispecer').hide();
             $('#ProfilKorisnickoImeDispecer').val(profil.KorisnickoIme),
             $('#ProfilEmailDispecer').val(profil.Email),
@@ -246,6 +252,7 @@ $(document).ready(function () {
     $('#profilVozac').click(function () {
         $('#profilVozaca').show(),
             $('#lokacijaVozaca').hide(),
+            $('#map').hide();
             $('#vozacStatus').hide(),
             $('#neprihvaceneVoznje').hide();
             $('#neuspesnaVoznjaKomentar').hide();
@@ -301,6 +308,7 @@ $(document).ready(function () {
     $('#searchKorisnik').click(function () {
         $('#profilKorisnika').hide(),
             $('#dodavanjeVoznje').hide(),
+            $('#map').hide();
             $('#otkazKomentar').hide();
         $('#izmenaVoznjeTabela').hide();
         $('#izmeniVoznjuKorisnik').hide(),
@@ -663,6 +671,7 @@ $(document).ready(function () {
         $('#profilKorisnika').show(),
             $('#dodavanjeVoznje').hide(),
             $('#otkazKomentar').hide();
+        $('#map').hide();
         $('#izmenaVoznjeTabela').hide();
         $('#searchRidesKorisnik').hide();
             $('#izmeniVoznjuKorisnik').hide(),
@@ -715,25 +724,27 @@ $(document).ready(function () {
         $('#lokacijaVozaca').show(),
             $('#profilVozaca').hide(),
             $('#vozacStatus').hide(),
+            $('#map').show();
             $('#searchRidesVozac').hide();
         $('#neprihvaceneVoznje').hide();
             $('#vozacOdrediste').hide();
             $('#neuspesnaVoznjaKomentar').hide();
-            $('#LokacijaUlicaVozac').val(profil.Lokacija.Adresa.UlicaBroj),
+        $('#LokacijaUlicaVozac').val(profil.Lokacija.Adresa.UlicaBroj),
             $('#LokacijaGradVozac').val(profil.Lokacija.Adresa.NaseljenoMesto),
             $('#LokacijaPostaVozac').val(profil.Lokacija.Adresa.PozivniBrojMesta),
             $('#LokacijaKordinataXVozac').val(profil.Lokacija.X),
-            $('#LokacijaKordinataYVozac').val(profil.Lokacija.Y)
+            $('#LokacijaKordinataYVozac').val(profil.Lokacija.Y);
+        myMap();
         $('#buttonLokacijaVozac').click(function () {
-
+            let niz = fulAdresa.split(',');
             let adresaV = {
-                UlicaBroj: $('#LokacijaUlicaVozac').val(),
-                NaseljenoMesto: $('#LokacijaGradVozac').val(),
+                UlicaBroj: `${niz[2]}`,
+                NaseljenoMesto: `${niz[3]}`,
                 PozivniBrojMesta: $('#LokacijaPostaVozac').val()
             };
             let lokacijaV = {
-                X: $('#LokacijaKordinataXVozac').val(),
-                Y: $('#LokacijaKordinataYVozac').val(),
+                X: `${niz[0]}`,
+                Y: `${niz[1]}`,
                 Adresa: adresaV
             };
             $.ajax({
@@ -755,6 +766,7 @@ $(document).ready(function () {
             $('#profilVozaca').hide(),
             $('#vozacStatus').show(),
             $('#neprihvaceneVoznje').hide();
+        $('#map').hide();
             $('#searchRidesVozac').hide();
             $('#neuspesnaVoznjaKomentar').hide();
         $('#vozacOdrediste').hide();
@@ -771,8 +783,7 @@ $(document).ready(function () {
                     var row;
 
                     $(data).each(function (index) {
-                        //var row = $('<tr>').addClass('success').text(data[index].LokacijaDolaskaTaksija.Adresa.UlicaBroj);
-                        //table.append(row);
+                        
 
                         var status;
                         if (data[index].StatusVoznje == 0) {
@@ -831,6 +842,8 @@ $(document).ready(function () {
                                         $('#vozacStatus').hide();
                                         $('#neuspesnaVoznjaKomentar').hide();
                                         $('#vozacOdrediste').show();
+                                        $('#map').show();
+                                        myMap();
 
                                         $.ajax({
                                             url: '/api/voznja/getstatus/' + id,
@@ -844,15 +857,16 @@ $(document).ready(function () {
                                         });
 
                                         $('#btnSaveDestination').click(function () {
+                                            let niz = fulAdresa.split(',');
                                             let adresa = {
-                                                UlicaBroj: `${$('#txtStreetNumDestination').val()}`,
-                                                NaseljenoMesto: `${$('#txtCityDestination').val()}`,
-                                                PozivniBroj: `${$('#txtZipCodeDestination').val()}`
+                                                UlicaBroj: `${niz[2]}`,
+                                                NaseljenoMesto: `${niz[3]}`,
+                                                PozivniBrojMesta: `${$('#txtZipCodeDestination').val()}`
                                             }
 
                                             let lokacija = {
-                                                X: `${$('#txtCoordinateXDestination').val()}`,
-                                                Y: `${$('#txtCoordinateYDestination').val()}`,
+                                                X: `${niz[0]}`,
+                                                Y: `${niz[1]}`,
                                                 Adresa: adresa
                                             }
 
@@ -890,6 +904,7 @@ $(document).ready(function () {
                                         $('#vozacStatus').hide();
                                         $('#neuspesnaVoznjaKomentar').show();
                                         $('#vozacOdrediste').hide();
+                                        $('#map').hide();
 
                                         $('#btnSaveNeuspesnaVoznjaComment').click(function () {
                                             let opis = $('#txtCommentNeuspesnaVoznjaDescription').val();
@@ -955,43 +970,57 @@ $(document).ready(function () {
     $('#voznjaKorisnik').click(function () {
         $('#dodavanjeVoznje').show();
         $('#searchRidesKorisnik').hide(),
-        $('#profilKorisnika').hide(),
-            $('#izmeniVoznjuKorisnik').hide();
+            $('#profilKorisnika').hide(),
+            $('#map').show();
+        $('#izmeniVoznjuKorisnik').hide();
         $('#izmenaVoznjeTabela').hide();
         $('#otkazKomentar').hide();
-        $('#buttonVoznja').click(function () {
-            let adresaVoznja = {
-                UlicaBroj: $('#UlicaBrojVoznja').val(),
-                NaseljenoMesto: $('#GradVoznja').val(),
-                PozivniBrojMesta: $('#PostaVoznja').val()
-            };
-            let lokacijaVoznja = {
-                X: $('#KordinataXVoznja').val(),
-                Y: $('#KordinataYVoznja').val(),
-                Adresa: adresaVoznja
-            };
-            var tipVoznja;
-            if (($('#TipAutaObicniVoznja').is(':checked'))) {
-                tipVoznja = $('#TipAutaObicniVoznja').val();
-                alert("tacno!");
-            }
-            else if (($('#KombiAutoVoznja').is(':checked'))) {
-                tipVoznja = $('#KombiAutoVoznja').val();
-            }
-            let autof = {
-                Tip: tipVoznja
-            };
-            $.ajax({
-                url: '/api/Korisnik/PostVoznja',
-                type: 'POST',
-                data: {
-                    //KorisnickoIme: $('#LokacijaKorisnickoImeVozac').val(),
-                    Lokacija: lokacijaVoznja,
-                    Automobil: autof
-                },
-            });
-        });
 
+        myMap();
+    });
+
+    $('#buttonVoznja').click(function () {
+
+        let niz = fulAdresa.split(',');
+       
+
+        var type;
+        if ($('#TipAutaObicniVoznja').is(':checked')) {
+            type = $('#TipAutaObicniVoznja').val();
+        }
+        else {
+            type = $('#KombiAutoVoznja').val();
+        }
+
+       
+
+        let adresa = {
+            UlicaBroj: `${niz[2]}`,
+            NaseljenoMesto: `${niz[3]}`,
+            PozivniBrojMesta: $('#PostaVoznja').val()
+        };
+
+        let lokacija = {
+            X: `${niz[0]}`,
+            Y: `${niz[1]}`,
+            Adresa: adresa
+        };
+
+
+
+        $.ajax({
+            url: '/api/Korisnik/PostVoznja',
+            method: 'POST',
+            data: {
+                Lokacija: lokacija,
+                Automobil: type,
+                
+            },
+            success: function (data) {
+                alert("Voznja je dodana!");
+               window.location.href = "Index.html";
+            }
+        });
     });
 
 
@@ -1000,6 +1029,7 @@ $(document).ready(function () {
         $('#profilKorisnika').hide(),
             $('#searchRidesKorisnik').hide(),
             $('#izmeniVoznjuKorisnik').show();
+        $('#map').hide();
         $('#izmenaVoznjeTabela').hide();
         $('#otkazKomentar').hide();
         $.ajax({
@@ -1011,8 +1041,7 @@ $(document).ready(function () {
                 table += `<tbody><tr><th>ID</th><th>Ulica i broj</th><th>Status</th><th>Otkazi</th><th>Izmeni</th><th>Komentarisi</th><th>Korisnicko ime</th><th>Opis</th><th>Ocena</th>`;
                 var row;
                 $(data).each(function (index) {
-                    //var row = $('<tr>').addClass('success').text(data[index].LokacijaDolaskaTaksija.Adresa.UlicaBroj);
-                    //table.append(row);
+                    
 
                     var id = data[index].Id;
                     var status;
@@ -1127,12 +1156,15 @@ $(document).ready(function () {
                         $('#izmeniVoznjuKorisnik').hide();
                         $('#modifikujVoznjuKorisnik').addClass("active");
                         $('#izmenaVoznjeTabela').show();
+                        $('#map').show();
+                        myMap();
 
                         var num = index;
 
                         $('#btnChange').click(function () {
 
                             var type;
+                            let niz = fulAdresa.split(',');
                             if ($('#txtTipAuto').is(':checked')) {
                                 type = $('#txtTipAuto').val();
                             }
@@ -1141,14 +1173,14 @@ $(document).ready(function () {
                             }
 
                             let adresa = {
-                                UlicaBroj: $('#txtUlicaBroj').val(),
-                                NaseljenoMesto: $('#txtGrad').val(),
+                                UlicaBroj: `${niz[2]}`,
+                                NaseljenoMesto: `${niz[3]}`,
                                 PozivniBrojMesta: $('#txtPosta').val()
                             };
 
                             let lokacija = {
-                                X: $('#txtKordinataX').val(),
-                                Y: $('#txtKordinataY').val(),
+                                X: `${niz[0]}`,
+                                Y: `${niz[1]}`,
                                 Adresa: adresa
                             };
 
@@ -1161,7 +1193,8 @@ $(document).ready(function () {
                                    
                                 },
                                 success: function (data) {
-
+                                    alert("Uspesno ste izmenili");
+                                    window.location.href = "Index.html";
                                 }
                             });
                         })
@@ -1177,16 +1210,19 @@ $(document).ready(function () {
         $('#dodajVozacaDeo').hide();
         $('#profilDispecera').hide();
         $('#obradiVoznjuDispecer').hide();
+        $('#map').show();
         $('#searchRidesDispecer').hide();
+        myMap();
         $('#buttonVoznjaDispecer').click(function () {
+            let niz = fulAdresa.split(',');
             let adresaVoznjaDispecer = {
-                UlicaBroj: $('#UlicaBrojVoznjaDispecer').val(),
-                NaseljenoMesto: $('#GradVoznjaDispecer').val(),
+                UlicaBroj: `${niz[2]}`,
+                NaseljenoMesto: `${niz[3]}`,
                 PozivniBrojMesta: $('#PostaVoznjaDispecer').val()
             };
             let lokacijaVoznjaDispecer = {
-                X: $('#KordinataXVoznjaDispecer').val(),
-                Y: $('#KordinataYVoznjaDispecer').val(),
+                X: `${niz[0]}`,
+                Y: `${niz[1]}`,
                 Adresa: adresaVoznjaDispecer
             };
             var tipVoznjaDispecer;
@@ -1218,6 +1254,7 @@ $(document).ready(function () {
         $('#voznjaDispecer').hide();
         $('#dodajVozacaDeo').hide();
         $('#profilDispecera').hide();
+        $('#map').hide();
         $('#obradiVoznjuDispecer').show();
         $('#searchRidesDispecer').hide();
 
@@ -1323,6 +1360,7 @@ $(document).ready(function () {
         $('#voznjaDispecer').hide();
         $('#dodajVozacaDeo').hide();
         $('#profilDispecera').hide();
+        $('#map').hide();
         $('#obradiVoznjuDispecer').hide();
         $('#searchRidesDispecer').show();
 
@@ -1741,6 +1779,7 @@ $(document).ready(function () {
         $('#lokacijaVozaca').hide();
         $('#vozacStatus').hide();
         $('#neuspesnaVoznjaKomentar').hide();
+        $('#map').hide();
         $('#vozacOdrediste').hide();
         $('#searchRidesVozac').hide();
         $('#neprihvaceneVoznje').show();
@@ -1825,6 +1864,7 @@ $(document).ready(function () {
         $('#vozacOdrediste').hide();
         $('#searchRidesVozac').show();
         $('#neprihvaceneVoznje').hide();
+        $('#map').hide();
         
         $.ajax({
             url: '/api/voznja/getdriversrides',
@@ -2195,3 +2235,90 @@ $(document).ready(function () {
 
 
 });
+
+function displayLocation(latitude, longitude) {
+    var request = new XMLHttpRequest();
+    var method = 'GET';
+    var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='
+        + latitude + ',' + longitude + '&sensor=true';
+    var async = false;
+    var address;
+    request.open(method, url, async);
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+            var data = JSON.parse(request.responseText);
+            address = data.results[0];
+            var value = address.formatted_address.split(",");
+            count = value.length;
+            country = value[count - 1];
+            state = value[count - 2];
+            city = value[count - 3];
+        }
+    };
+    request.send();
+    return address.formatted_address;
+};
+
+
+
+function placeMarker(map, location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+    var fullAdresa = displayLocation(location.lat(), location.lng());
+    
+    var delovi = fullAdresa.split(",");
+    var ulicaIbroj = delovi[0];
+    var grad = delovi[1];//sa zipom
+    var drzava = delovi[2];
+    fulAdresa = location.lat() + "," + location.lng() + "," + ulicaIbroj + "," + grad + "," + drzava;
+    
+
+    var array = fulAdresa.split(',');
+
+    $('#KordinataXVoznja').val(array[0]);
+    $('#KordinataYVoznja').val(array[1]);
+    $('#UlicaBrojVoznja').val(array[2]);
+    $('#GradVoznja').val(array[3]);
+
+    $('#txtKordinataX').val(array[0]);
+    $('#txtKordinataY').val(array[1]);
+    $('#txtUlicaBroj').val(array[2]);
+    $('#txtGrad').val(array[3]);
+
+    $('#LokacijaKordinataXVozac').val(array[0]);
+    $('#LokacijaKordinataYVozac').val(array[1]);
+    $('#LokacijaUlicaVozac').val(array[2]);
+    $('#LokacijaGradVozac').val(array[3]);
+
+    $('#txtCoordinateXDestination').val(array[0]);
+    $('#txtCoordinateYDestination').val(array[1]);
+    $('#txtStreetNumDestination').val(array[2]);
+    $('#txtCityDestination').val(array[3]);
+
+    $('#KordinataXVoznjaDispecer').val(array[0]);
+    $('#KordinataYVoznjaDispecer').val(array[1]);
+    $('#UlicaBrojVoznjaDispecer').val(array[2]);
+    $('#GradVoznjaDispecer').val(array[3]);
+
+    $('#KordinataXVozac').val(array[0]);
+    $('#KordinataYVozac').val(array[1]);
+    $('#UlicaVozac').val(array[2]);
+    $('#GradVozac').val(array[3]);
+
+    var infowindow = new google.maps.InfoWindow({
+        content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br>Ulica i broj: ' + ulicaIbroj + '<br>Grad: ' + grad + '<br>Drzava: ' + drzava + '<br>=' + displayLocation(location.lat(), location.lng())
+    });
+    infowindow.open(map, marker);
+}
+
+function myMap() {
+    var mapCanvas = document.getElementById("map");
+    var myCenter = new google.maps.LatLng(45.242630873254775, 19.842914435055945);
+    var mapOptions = { center: myCenter, zoom: 15 };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    google.maps.event.addListener(map, 'click', function (event) {
+        placeMarker(map, event.latLng);
+    });
+}

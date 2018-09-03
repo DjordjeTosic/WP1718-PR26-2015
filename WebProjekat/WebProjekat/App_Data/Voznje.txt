@@ -6,3 +6,6 @@
 5|8/27/2018 8:43:04 PM|312.4|123.4|asa|bassa|21312|Putnicki|admin1|0|0||||admin1|novi|0||||||Prihvacena
 6|9/3/2018 2:02:25 PM|13.4|444.4|Vojvode Stepe 9|Beograd|21000|Svejedno|krele|0|0|||||suma|0|Haosa|9/3/2018 2:40:21 PM|suma||3|Neuspesna
 7|9/3/2018 2:45:24 PM|11.1|44.6|Tamo neka 19|Mitrovica|22110|Svejedno|krele|13.6|999|Cara Lazara 99|Sid|||suma|1980||||||Obradjena
+8|9/3/2018 5:52:14 PM|45.2434769416646|19.8406613794834|Bulevar cara Lazara| Novi Sad 21000|21000|Kombi|krele|0|0||||admin1|luja|0||||||Prihvacena
+9|9/3/2018 5:55:41 PM|45.2432654257434|19.8201354198886|Bulevar Evrope 17| Novi Sad 406018|406018|Putnicki|krele|0|0||||||0||||||Kreirana
+10|9/3/2018 6:05:10 PM|45.2416639225006|19.8426354853184|Narodnog fronta 10| Novi Sad 21102|21102|Kombi|krele|0|0||||||0||||||Kreirana
