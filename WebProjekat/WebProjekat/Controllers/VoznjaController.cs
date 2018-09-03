@@ -194,5 +194,85 @@ namespace WebProjekat.Controllers
 
             return false;
         }
+
+        [HttpGet]
+        [Route("api/voznja/getdispecerovevoznjesearch")]
+        public List<Voznja> GetDispeceroveVoznjeSearch()
+        {
+            Dispeceri users = HttpContext.Current.Application["dispeceri"] as Dispeceri;
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            List<Voznja> retVal = new List<Voznja>();
+            retVal = voznje.list;
+
+            return retVal;
+        }
+
+        [HttpGet]
+        [Route("api/voznja/getslobodne")]
+        public List<Voznja> GetSlobodne()
+        {
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+            Vozaci vozaci = HttpContext.Current.Application["vozaci"] as Vozaci;
+
+            List<Voznja> retVal = new List<Voznja>();
+
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            if (user.KorisnickoIme != "" && user.KorisnickoIme != null && user.Uloga == Enums.Uloga.Vozac)
+            {
+                foreach (Voznja v in voznje.list)
+                {
+                    if (v.StatusVoznje == Enums.StatusVoznje.Kreirana)
+                    {
+                        retVal.Add(v);
+                    }
+                }
+                return retVal;
+            }
+
+            return new List<Voznja>();
+        }
+
+        [HttpGet]
+        [Route("api/voznja/getdriversrides")]
+        public List<Voznja> GetDriversRides()
+        {
+            Voznje voznje = HttpContext.Current.Application["voznje"] as Voznje;
+            Vozaci vozaci = HttpContext.Current.Application["vozaci"] as Vozaci;
+
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
+
+            if (user.KorisnickoIme != "" && user.KorisnickoIme != null && user.Uloga == Enums.Uloga.Vozac)
+            {
+                foreach (Vozac rider in vozaci.list)
+                {
+                    if (rider.KorisnickoIme == user.KorisnickoIme)
+                    {
+                        return rider.voznjeKorisnika;
+                    }
+                }
+            }
+
+            return new List<Voznja>();
+        }
+
+
     }
 }

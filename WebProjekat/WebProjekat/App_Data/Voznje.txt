@@ -4,3 +4,5 @@
 3|8/25/2018 8:53:53 PM|12.5|10|Bulevar Cara Lazara 8|Novi Sad|21000|Svejedno|admin1|0|0||||admin1|Kimi|0|Sranje tesko sranje|9/1/2018 4:33:34 PM|Kimi||7|Neuspesna
 4|8/25/2018 9:06:03 PM|11.9|88|Brace Ribnikara 9|Novi Sad|21000|Kombi|admin1|89.7|100|Vojvode Putnika 10|Beograd||admin1|luja|1300||||||Obradjena
 5|8/27/2018 8:43:04 PM|312.4|123.4|asa|bassa|21312|Putnicki|admin1|0|0||||admin1|novi|0||||||Prihvacena
+6|9/3/2018 2:02:25 PM|13.4|444.4|Vojvode Stepe 9|Beograd|21000|Svejedno|krele|0|0|||||suma|0|Haosa|9/3/2018 2:40:21 PM|suma||3|Neuspesna
+7|9/3/2018 2:45:24 PM|11.1|44.6|Tamo neka 19|Mitrovica|22110|Svejedno|krele|13.6|999|Cara Lazara 99|Sid|||suma|1980||||||Obradjena
