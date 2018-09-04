@@ -183,7 +183,7 @@ namespace WebProjekat.Controllers
 
                     string line = item.Id.ToString() + ':' + item.KorisnickoIme + ':' + item.Lozinka + ':' + item.Ime + ':'
                     + item.Prezime + ':' + item.Pol + ':' + item.JMBG + ':' + item.KontaktTelefon + ':'
-                    + item.Email + ':' + item.Uloga;
+                    + item.Email + ':' + item.Uloga + ':' +  item.Ban;
 
 
                     var file = File.Open(path, FileMode.Open);

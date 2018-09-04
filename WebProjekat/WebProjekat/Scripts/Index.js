@@ -1766,6 +1766,43 @@ $(document).ready(function () {
                             });
 
                             $("#tabelaSortDispecer").html(table);
+
+                            $(data).each(function (index) {
+                                var korisnik = voznje[index];
+                                $('#btnBanujKorisnika' + index).click(function () {
+                                    $.ajax({
+                                        url: '/api/ban/putban',
+                                        type: 'PUT',
+                                        data: JSON.stringify(korisnik),
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data) {
+                                                alert("Uspesno banovan");
+                                            } else {
+                                                alert("Neuspesno banovan");
+                                            }
+                                        }
+                                    });
+                                });
+
+                                $('#btnOdbanujKorisnika' + index).click(function () {
+                                    $.ajax({
+                                        url: '/api/ban/putunban',
+                                        type: 'PUT',
+                                        data: JSON.stringify(korisnik),
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            if (data) {
+                                                alert("Uspesno odbanovan");
+                                            } else {
+                                                alert("Neuspesno odbanovan");
+                                            }
+                                        }
+                                    });
+                                });
+                            });
                         }
                     });
                 });

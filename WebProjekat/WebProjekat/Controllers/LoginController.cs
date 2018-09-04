@@ -38,14 +38,23 @@ namespace Projekat.Controllers
             {
                 if (item.KorisnickoIme == korisnik.KorisnickoIme && item.Lozinka == korisnik.Lozinka)
                 {
+                    if(item.Ban == Enums.Banovan.DA)
+                    {
+                        return false;
+                    }
                     HttpContext.Current.Session["user"] = item as Korisnik;
                     return true;
                 }
+                
             }
             foreach (var item in vozaci.list)
             {
                 if (item.KorisnickoIme == korisnik.KorisnickoIme && item.Lozinka == korisnik.Lozinka)
                 {
+                    if (item.Ban == Enums.Banovan.DA)
+                    {
+                        return false;
+                    }
                     HttpContext.Current.Session["user"] = item as Vozac;
                     return true;
                 }

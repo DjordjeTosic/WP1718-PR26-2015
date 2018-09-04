@@ -1,6 +1,3 @@
-0:krele:krele:Djoka:Tosic:Zenski:2511996890149:0644861893:djole.tosic96@gmail.com:Musterija
-
-
-
-
-
+0:krele:krele:Djoka:Tosic:Zenski:2511996890149:0644861893:djole.tosic96@gmail.com:Musterija:NE
+1:dragan:drago:Dragan:Torbica:Muski:3123991239:06413213312:drago@gmail.com:Musterija:DA
+2:mia:mia:mia:mia:Zenski:2131:32112414:mia@gmail.com:Musterija:NE

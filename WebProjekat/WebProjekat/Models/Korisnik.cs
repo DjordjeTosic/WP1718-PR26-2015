@@ -24,7 +24,7 @@ namespace Projekat.Models
 
         public Korisnik(int id,  string korisnickoIme, string lozinka, string ime, string prezime, string pol, string jmbg, string kontakt,  string email, string b) : this()
         {
-            if (b.Equals("DA")) { Ban = Banovan.DA; } else if (b.Equals("NE")) { Ban = Banovan.NE; } else { Ban = Banovan.IGNORE; }
+            if (b.Contains("DA")) { Ban = Banovan.DA; } else if (b.Contains("NE")) { Ban = Banovan.NE; } else { Ban = Banovan.IGNORE; }
             Id = id;
             Ime = ime;
             Prezime = prezime;
