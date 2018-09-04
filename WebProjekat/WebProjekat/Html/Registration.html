@@ -5,6 +5,8 @@
     <title></title>
     <script src="/Scripts/jquery-3.3.1.js"></script>
     <script src="/Scripts/Registration.js"></script>
+    <script src="../Scripts/jquery.validate.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
     <link href="../Content/style.css" rel="stylesheet" />
     <link href="/Content/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
@@ -38,73 +40,95 @@
     </nav>
     <div class="container" style="padding-top:70px">
         <div class="well">
+            <form method="post" action="#" id="regForm">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="success">
+                            <th colspan="2" style="text-align:center">Registracija novog korisnika</th>
+                        </tr>
+                    </thead>
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr class="success">
-                        <th colspan="2" style="text-align:center">Registracija novog korisnika</th>
+                    <tr>
+                        <td>Korisnicko ime</td>
+                        <td><input type="text" id="regKorisnickoIme" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
                     </tr>
-                </thead>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" placeholder="Email" class="form-control" id="regEmail" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Lozinka</td>
+                        <td><input type="password" placeholder="Lozinka" class="form-control" id="regLozinka" name="lozinka" /></td>
+                    </tr>
+                    <tr>
+                        <td>Potvrdite lozinku</td>
+                        <td><input type="password" placeholder="Potvrdite lozinku" class="form-control" id="regPotvrda" name="lozinkaPotvrda" /></td>
+                    </tr>
+                    <tr>
+                        <td>Ime</td>
+                        <td><input type="text" placeholder="Ime" class="form-control" id="regIme" name="ime" /></td>
+                    </tr>
+                    <tr>
+                        <td>Prezime</td>
+                        <td><input type="text" placeholder="Prezime" class="form-control" id="regPrezime" name="prezime" /></td>
+                    </tr>
+                    <tr>
+                        <td>JMBG</td>
+                        <td><input type="text" placeholder="JMBG" class="form-control" id="regJMBG" name="jmbg" /></td>
+                    </tr>
+                    <tr>
+                        <td>Kontakt Telefon</td>
+                        <td><input type="text" id="regTelefon" placeholder="Telefon" class="form-control" name="telefon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Pol</td>
+                        <td>
+                            <input type="radio" id="regMusko" name="pol" value="Muski">Muskarac
+                            <input type="radio" id="regZensko" name="pol" value="Zenski" />Zena
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" id="buttonReg" style="background-color:chartreuse" class="form-control" value="Registruj se" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <script>validateRegister()</script>
 
-                <tr>
-                    <td>Korisnicko ime</td>
-                    <td><input type="text" id="regKorisnickoIme" class="form-control" name="username" placeholder="Korisnicko ime" /></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input type="email" placeholder="Email" class="form-control" id="regEmail" name="email" /></td>
-                </tr>
-                <tr>
-                    <td>Lozinka</td>
-                    <td><input type="password" placeholder="Lozinka" class="form-control" id="regLozinka" name="lozinka" /></td>
-                </tr>
-                <tr>
-                    <td>Potvrdite lozinku</td>
-                    <td><input type="password" placeholder="Potvrdite lozinku" class="form-control" id="regPotvrda" name="lozinkaPotvrda" /></td>
-                </tr>
-                <tr>
-                    <td>Ime</td>
-                    <td><input type="text" placeholder="Ime" class="form-control" id="regIme" name="ime" /></td>
-                </tr>
-                <tr>
-                    <td>Prezime</td>
-                    <td><input type="text" placeholder="Prezime" class="form-control" id="regPrezime" name="prezime" /></td>
-                </tr>
-                <tr>
-                    <td>JMBG</td>
-                    <td><input type="text" placeholder="JMBG" class="form-control" id="regJMBG" name="jmbg" /></td>
-                </tr>
-                <tr>
-                    <td>Kontakt Telefon</td>
-                    <td><input type="text" id="regTelefon" placeholder="Telefon" class="form-control" name="telefon" /></td>
-                </tr>
-                <tr>
-                    <td>Pol</td>
-                    <td>
-                        <input type="radio" id="regMusko" name="pol" value="Muski">Muskarac
-                        <input type="radio" id="regZensko" name="pol" value="Zenski" />Zena
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" id="buttonReg" style="background-color:chartreuse" class="form-control" value="Registruj se" />
-                    </td>
-                </tr>
-            </table>
-
-
+            <div class="modal fade" tabindex="-1" id="successModal"
+                 data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                            <h4 class="modal-title">Success</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <h2 class="modal-title">Registration Successful!</h2>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success"
+                                    data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
 
-    <div id="errorReg" class="alert alert-danger collapse">
-        <a id="linkClose" href="#" class="close">&times;</a>
-        <div id="divErrorText"></div>
-    </div>
-
-   
-        
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>

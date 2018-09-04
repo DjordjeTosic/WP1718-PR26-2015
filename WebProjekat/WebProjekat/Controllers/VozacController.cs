@@ -82,11 +82,16 @@ namespace WebProjekat.Controllers
         [Route("api/Vozac/PostLokacija")]
         public bool PostLokacija([FromBody]Vozac vozac)
         {
-
+            Korisnik user = (Korisnik)HttpContext.Current.Session["user"];
+            if (user == null)
+            {
+                user = new Korisnik();
+                HttpContext.Current.Session["user"] = user;
+            }
             Vozaci users = (Vozaci)HttpContext.Current.Application["vozaci"];
             foreach (var item in users.list)
             {
-                if (vozac.KorisnickoIme == item.KorisnickoIme)
+                if (user.KorisnickoIme == item.KorisnickoIme)
                 {
                     item.Lokacija.Adresa.NaseljenoMesto = vozac.Lokacija.Adresa.NaseljenoMesto;
                     item.Lokacija.Adresa.PozivniBrojMesta = vozac.Lokacija.Adresa.PozivniBrojMesta;

@@ -100,17 +100,13 @@ namespace WebProjekat.Controllers
                     + item.Email + ':' + item.Uloga;
 
 
-                    var file = File.Open(path, FileMode.Open);
-                    file.Close();
+                    
                     string[] arrLine = File.ReadAllLines(path);
                     arrLine[item.Id] = line;
-                    //File.WriteAllLines(path, arrLine);
-
-                    //var file = File.Open(path)
-                    //arrLine[item.Id] = Regex.Replace(arrLine[item.Id], @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+                   
                     File.WriteAllLines(path, arrLine);
 
-                    file.Close();
+                    
 
 
 
@@ -179,7 +175,8 @@ namespace WebProjekat.Controllers
                         v.Id = user.voznjeKorisnika.Count;
                         user.voznjeKorisnika.Add(v);
 
-                        v.Id = item.voznjeKorisnika.Count;
+                        
+                        v.Id = 0;
                         item.voznjeKorisnika.Add(v);
 
                         vozaci.list[item.Id].voznjeKorisnika.Add(v);

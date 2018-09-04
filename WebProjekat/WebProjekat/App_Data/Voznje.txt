@@ -6,6 +6,9 @@
 5|8/27/2018 8:43:04 PM|312.4|123.4|asa|bassa|21312|Putnicki|admin1|0|0||||admin1|novi|0||||||Prihvacena
 6|9/3/2018 2:02:25 PM|13.4|444.4|Vojvode Stepe 9|Beograd|21000|Svejedno|krele|0|0|||||suma|0|Haosa|9/3/2018 2:40:21 PM|suma||3|Neuspesna
 7|9/3/2018 2:45:24 PM|11.1|44.6|Tamo neka 19|Mitrovica|22110|Svejedno|krele|13.6|999|Cara Lazara 99|Sid|||suma|1980||||||Obradjena
-8|9/3/2018 5:52:14 PM|45.2434769416646|19.8406613794834|Bulevar cara Lazara| Novi Sad 21000|21000|Kombi|krele|0|0||||admin1|luja|0||||||Prihvacena
+8|9/3/2018 5:52:14 PM|45.2434769416646|19.8406613794834|Bulevar cara Lazara| Novi Sad 21000|21000|Kombi|krele|0|0||||admin1|luja|0|ajmo|9/4/2018 9:51:22 PM|luja||10|Neuspesna
 9|9/3/2018 5:55:41 PM|45.2432654257434|19.8201354198886|Bulevar Evrope 17| Novi Sad 406018|406018|Putnicki|krele|0|0|||||suma|0||||||Prihvacena
-10|9/3/2018 6:05:10 PM|45.2416639225006|19.8426354853184|Narodnog fronta 10| Novi Sad 21102|21102|Kombi|krele|0|0||||||0||||||Kreirana
+10|9/3/2018 6:05:10 PM|45.2416639225006|19.8426354853184|Narodnog fronta 10| Novi Sad 21102|21102|Kombi|krele|0|0||||||0|Odlicna|9/4/2018 9:47:28 PM|luja||10|Neuspesna
+11|9/4/2018 4:13:35 PM|45.2407271732637|19.8400176493199|Narodnog fronta| Novi Sad 21102|21102|Kombi|bond|0|0||||||0|asdsdsa|9/4/2018 4:26:11 PM|bond||5|Otkazana
+12|9/4/2018 9:27:12 PM|45.2431445591491|19.8448670832188|Boška Buhe 8| Novi Sad 21000|21000|Kombi|admin1|0|0||||admin1|mile|0||||||Prihvacena
+13|9/4/2018 9:57:28 PM|45.243235209119|19.8321855989964|Tolstojeva 41| Novi Sad|21000|Putnicki|krele|0|0|||||Kimi|0|Vrlo lose iskustvo|9/4/2018 9:58:37 PM|Kimi||6|Neuspesna

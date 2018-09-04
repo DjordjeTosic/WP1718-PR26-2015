@@ -100,7 +100,10 @@ namespace WebProjekat.Controllers
                 if (v.KorisnickoIme == korisnik.KorisnickoIme)
                 {
                     List<Voznja> retVal = new List<Voznja>();
+                    
                     retVal = v.voznjeKorisnika;
+                    
+                    
                     foreach (Voznja ride in voznje.list)
                     {
                         if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana)
@@ -229,9 +232,9 @@ namespace WebProjekat.Controllers
             {
                 if (korisnik.KorisnickoIme == user.KorisnickoIme)
                 {
-                    foreach (Voznja ride in korisnik.voznjeKorisnika)
+                    foreach (Voznja ride in user.voznjeKorisnika)
                     {
-                        if (ride.Id == komentar.Id)
+                        if (ride.Komentar.Id == komentar.Id)
                         {
                             ride.Komentar.Id = komentar.Id;
                             ride.Komentar.DatumObjave = DateTime.UtcNow.ToString();
@@ -461,6 +464,8 @@ namespace WebProjekat.Controllers
                             ride.Lokacija.Adresa.PozivniBrojMesta = v.Lokacija.Adresa.PozivniBrojMesta;
                             ride.Lokacija.Adresa.UlicaBroj = v.Lokacija.Adresa.UlicaBroj;
 
+
+                            //user.voznjeKorisnika[v.Id] = ride;
                             
                             string path = "~/App_Data/Voznje.txt";
                             path = HostingEnvironment.MapPath(path);
@@ -476,16 +481,18 @@ namespace WebProjekat.Controllers
                             arrLine[ride.Id] = line;
                             File.WriteAllLines(path, arrLine);
                             //File.WriteAllLines(path, File.ReadAllLines(path).Where(l => !string.IsNullOrWhiteSpace(l)));
+
+                            Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
+                            HttpContext.Current.Application["voznje"] = voznje2;
+                            Korisnici korisnici2 = new Korisnici(@"~/App_Data/Korisnici.txt");
+                            HttpContext.Current.Application["korisnici"] = korisnici2;
+
+                            return true;
                         }
                     }
                 }
 
-                Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
-                HttpContext.Current.Application["voznje"] = voznje2;
-                Korisnici korisnici2 = new Korisnici(@"~/App_Data/Korisnici.txt");
-                HttpContext.Current.Application["korisnici"] = korisnici2;
-
-                return true;
+                
             }
 
             return false;

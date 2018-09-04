@@ -43,7 +43,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -78,7 +78,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -120,7 +120,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -160,7 +160,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -211,7 +211,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -271,7 +271,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -312,7 +312,14 @@ namespace WebProjekat.Controllers
 
             foreach (Voznja v in search)
             {
-                grade = Int32.Parse(v.Komentar.Ocena);
+                if (v.Komentar.Ocena != "")
+                {
+                    grade = Int32.Parse(v.Komentar.Ocena);
+                }
+                else
+                {
+                    continue;
+                }
                 if (!flag1)
                     from = grade;
 
@@ -325,7 +332,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -375,7 +382,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -430,7 +437,7 @@ namespace WebProjekat.Controllers
 
            
 
-            //HttpContext.Current.Session["searchUsers"] = retVal;
+            HttpContext.Current.Session["searchUsers"] = retVal;
 
             return retVal;
         }
@@ -466,7 +473,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -510,7 +517,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -568,7 +575,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -619,7 +626,7 @@ namespace WebProjekat.Controllers
                 }
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }

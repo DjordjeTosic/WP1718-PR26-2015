@@ -54,7 +54,7 @@ namespace WebProjekat.Controllers
                 retVal = retVal.OrderByDescending(x => x.Komentar.Ocena).ToList();
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -98,7 +98,7 @@ namespace WebProjekat.Controllers
                 retVal = retVal.OrderByDescending(x => x.Komentar.Ocena).ToList();
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }
@@ -142,7 +142,7 @@ namespace WebProjekat.Controllers
                 retVal = retVal.OrderByDescending(x => x.Komentar.Ocena).ToList();
             }
 
-            //HttpContext.Current.Session["search"] = retVal;
+            HttpContext.Current.Session["search"] = retVal;
 
             return retVal;
         }

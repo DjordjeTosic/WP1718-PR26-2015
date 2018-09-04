@@ -1280,8 +1280,53 @@ $(document).ready(function () {
                         var row;
                         $(data).each(function (index) {
 
+                            let najblizi = [];
 
                             statusi[index] = data[index].StatusVoznje;
+
+                            for (var driver in slobodniVozaci) {
+                                let distance;
+                                distance = Math.sqrt(Math.pow(slobodniVozaci[driver].Lokacija.X - data[index].Lokacija.X, 2) + Math.pow(slobodniVozaci[driver].Lokacija.Y - data[index].Lokacija.Y, 2))
+   
+                                let vozac1 = {
+                                    KorisnickoIme: slobodniVozaci[driver].KorisnickoIme,
+                                    Rastojanje: distance
+                                }
+                                najblizi.push(vozac1);
+                            }
+                            
+
+                            najblizi.sort(function (a, b) {
+                                return a.Rastojanje - b.Rastojanje;
+                            })
+
+                            let petNajblizih = [];
+
+                            if (najblizi.length >= 5) {
+                                petNajblizih[0] = najblizi[0];
+                                petNajblizih[1] = najblizi[1];
+                                petNajblizih[2] = najblizi[2];
+                                petNajblizih[3] = najblizi[3];
+                                petNajblizih[4] = najblizi[4];
+                            } else if (najblizi.length == 4) {
+                                petNajblizih[0] = najblizi[0];
+                                petNajblizih[1] = najblizi[1];
+                                petNajblizih[2] = najblizi[2];
+                                petNajblizih[3] = najblizi[3];
+                            } else if (najblizi.length == 3) {
+                                petNajblizih[0] = najblizi[0];
+                                petNajblizih[1] = najblizi[1];
+                                petNajblizih[2] = najblizi[2];
+                            } else if (najblizi.length == 2) {
+                                petNajblizih[0] = najblizi[0];
+                                petNajblizih[1] = najblizi[1];
+                            } else if (najblizi.length == 1) {
+                                petNajblizih[0] = najblizi[0];
+                            } else {
+                                petNajblizih[0] = "Nema slobodnih";
+                            }
+                            alert(petNajblizih[0].KorisnickoIme);
+
                             var status;
                             if (data[index].StatusVoznje == 0) {
                                 status = "Kreirana na cekanju";
@@ -1307,9 +1352,9 @@ $(document).ready(function () {
 
                             table += `<td><select id="slobodniVozaciDispecer${index}">`
 
-                            //alert(slobodniVozaci[0].KorisnickoIme);
-                            $(slobodniVozaci).each(function (indeks) {
-                                table += `<option value="${slobodniVozaci[indeks].KorisnickoIme}">${slobodniVozaci[indeks].KorisnickoIme}</option>`
+
+                            $(petNajblizih).each(function (indeks) {
+                                table += `<option value="${petNajblizih[indeks].idKorisnik}">${petNajblizih[indeks].idKorisnik}</option>`
                             });
 
                             table += `</select></td>`

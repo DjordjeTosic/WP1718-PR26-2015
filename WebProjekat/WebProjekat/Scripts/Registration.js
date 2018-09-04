@@ -1,10 +1,81 @@
-﻿
+﻿function validateRegister() {
+    $("#regForm").validate({
+        rules: {
+            username: {
+                required: true,
+                minlength: 4
+            },
+            email: {
+                email: true
+            },
+            lozinka: {
+                required: true,
+                minlength: 4
+            },
+            lozinkaPotvrda: {
+                required: true,
+                equalTo: '#regLozinka',
+            },
+            ime: {
+                required: true
+            },
+            prezime: {
+                required: true
+            },
+            jmbg: {
+                required: true,
+                number: true,
+                minlength: 13,
+                maxlength: 13
+            },
+            telefon: {
+                number: true
+            }
+        },
+        messages: {
+            username: {
+                required: "Morate uneti ovo polje",
+                minlength: "Korisnicko ime mora biti minimum 4 slova dugacak"
+            },
+            email: {
+                email: "Morate uneti validnu e-mail adresu."
+            },
+            lozinka: {
+                required: "Morate uneti ovo polje",
+                minlength: "Lozinka mora biti minimum 5 slova dugacak"
+            },
+            lozinkaPotvrda: {
+                required: "Morate uneti ovo polje",
+                equalTo: "Password i Confirm Password polja se ne poklapaju"
+            },
+            ime: {
+                required: "Morate uneti ovo polje"
+            },
+            prezime: {
+                required: "Morate uneti ovo polje"
+            },
+            jmbg: {
+                required: "Morate uneti ovo polje",
+                number: "Ovo polje mora biti broj",
+                minlength: "JMBG mora imati 13 cifara",
+                maxlength: "JMBG mora imati 13 cifara"
+            },
+            telefon: {
+                required: "Morate uneti ovo polje",
+                number: "Ovo polje mora biti broj"
+            }
+        },
+
+        submitHandler: function (form) { doRegistrationSubmit() }
+
+    });
+}
 $('#linkClose').click(function () {
     $('#divError').hide('fade');
 });
-$(document).ready(function () {
+function doRegistrationSubmit() {
     
-    $('#buttonReg').click(function () {
+    
         var gndr;
         var isC;
         isC = $('#regMusko').is(':checked');
@@ -60,5 +131,5 @@ $(document).ready(function () {
             }
         });
 
-    });
-    });
+    
+}
