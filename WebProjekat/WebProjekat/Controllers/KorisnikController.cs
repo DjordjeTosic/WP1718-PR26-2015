@@ -106,10 +106,10 @@ namespace WebProjekat.Controllers
                     
                     foreach (Voznja ride in voznje.list)
                     {
-                        if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana)
-                        {
-                            retVal.Add(ride);
-                        }
+                        //if (ride.StatusVoznje == Enums.StatusVoznje.Kreirana)
+                        //{
+                        //    retVal.Add(ride);
+                        //}
                     }
 
                     HttpContext.Current.Session["search"] = retVal;
@@ -371,26 +371,17 @@ namespace WebProjekat.Controllers
                 k.Opis = "";
                 v.Ocena = 0;
                 v.Komentar = k;
-                //v.Komentar.Id = 0;
-                //v.Komentar.DatumObjave = "";
-                //v.Komentar.idKorisnik = "";
-                //v.Komentar.idVoznja = "";
-                //v.Komentar.Ocena = "";
-                //v.Komentar.Opis = "";
                 v.Iznos = 0;
                 
                 v.idVozac = "";
                 v.idKorisnik = user.KorisnickoIme;
                 v.StatusVoznje = Enums.StatusVoznje.Kreirana;
 
-
-
-                //user.voznjeKorisnika.Add(v);
                 voznje.list.Add(v);
                 users.list[user.Id].voznjeKorisnika.Add(v);
 
 
-                //string path = @"C:\Users\Coa\Desktop\NovaVerzija\WebAPI\WebAPI\App_Data\voznje.txt";
+                
                 string path = "~/App_Data/Voznje.txt";
                 path = HostingEnvironment.MapPath(path);
 

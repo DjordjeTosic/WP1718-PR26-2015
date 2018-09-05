@@ -49,7 +49,7 @@ namespace WebProjekat.Controllers
                 {
                     if (vozac.KorisnickoIme == user.KorisnickoIme)
                     {
-                        return user.voznjeKorisnika;
+                        return vozac.voznjeKorisnika;
                     }
                 }
             }

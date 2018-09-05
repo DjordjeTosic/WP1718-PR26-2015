@@ -465,7 +465,7 @@ namespace WebProjekat.Controllers
             List<Voznja> retVal = new List<Voznja>();
 
 
-            foreach (Voznja v in search)
+            foreach (Voznja v in user.voznjeKorisnika)
             {
                 if (v.StatusVoznje.ToString() == id)
                 {

@@ -22,9 +22,10 @@ namespace Projekat.Models
         public Korisnik() { }
         public List<Voznja> voznjeKorisnika { get; set; }
 
-        public Korisnik(int id,  string korisnickoIme, string lozinka, string ime, string prezime, string pol, string jmbg, string kontakt,  string email, string b) : this()
+        public Korisnik(int id,  string korisnickoIme, string lozinka, string ime, string prezime, string pol, string jmbg, string kontakt,  string email, string u, string b) : this()
         {
             if (b.Contains("DA")) { Ban = Banovan.DA; } else if (b.Contains("NE")) { Ban = Banovan.NE; } else { Ban = Banovan.IGNORE; }
+            if (u.Contains("Musterija")) { Uloga = Uloga.Musterija; } 
             Id = id;
             Ime = ime;
             Prezime = prezime;

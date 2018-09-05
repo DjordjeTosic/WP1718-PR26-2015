@@ -772,7 +772,7 @@ $(document).ready(function () {
         $('#vozacOdrediste').hide();
 
             $.ajax({
-                url: '/api/Voznja/GetVozacoveVoznje',
+                url: '/api/Voznja/getdriversrides',
                 type: 'GET',
                 success: function (data) {
                     alert("Upao");

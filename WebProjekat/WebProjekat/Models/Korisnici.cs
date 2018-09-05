@@ -27,7 +27,7 @@ namespace Projekat.Models
                     break;
                 }
                 string[] tokens = line.Split(':');
-                Korisnik p = new Korisnik(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9]);
+                Korisnik p = new Korisnik(Int32.Parse(tokens[0]), tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7], tokens[8], tokens[9],tokens[10]);
                 //p.Id = list.Count.ToString();
                 list.Add(p);
             }

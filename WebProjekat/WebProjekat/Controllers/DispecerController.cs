@@ -169,7 +169,7 @@ namespace WebProjekat.Controllers
                         v.Iznos = 0;
 
                         v.idVozac = item.KorisnickoIme;
-                        v.idKorisnik = user.KorisnickoIme;
+                        v.idKorisnik = "";
                         v.StatusVoznje = Enums.StatusVoznje.Prihvacena;
 
                         v.Id = user.voznjeKorisnika.Count;
@@ -177,6 +177,10 @@ namespace WebProjekat.Controllers
 
                         
                         v.Id = 0;
+                        if(item.voznjeKorisnika == null)
+                        {
+                            item.voznjeKorisnika = new List<Voznja>();
+                        }
                         item.voznjeKorisnika.Add(v);
 
                         vozaci.list[item.Id].voznjeKorisnika.Add(v);
@@ -262,6 +266,11 @@ namespace WebProjekat.Controllers
                         voznje.list[Int32.Parse(id)].idVozac = item.KorisnickoIme;
                         voznje.list[Int32.Parse(id)].StatusVoznje = Enums.StatusVoznje.Prihvacena;
 
+
+                        if(item.voznjeKorisnika == null)
+                        {
+                            item.voznjeKorisnika = new List<Voznja>();
+                        }
                         item.voznjeKorisnika.Add(voznje.list[Int32.Parse(id)]);
 
                         string path = "~/App_Data/Vozaci.txt";
