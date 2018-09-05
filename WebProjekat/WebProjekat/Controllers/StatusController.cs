@@ -175,7 +175,7 @@ namespace WebProjekat.Controllers
                             string[] arrLine2 = File.ReadAllLines(path);
                             arrLine2[ride.Id] = line;
                             File.WriteAllLines(path, arrLine2);
-                            //File.WriteAllLines(path, File.ReadAllLines(path).Where(l => !string.IsNullOrWhiteSpace(l)));
+                           
 
                             Voznje voznje2 = new Voznje("~/App_Data/Voznje.txt");
                             HttpContext.Current.Application["voznje"] = voznje2;

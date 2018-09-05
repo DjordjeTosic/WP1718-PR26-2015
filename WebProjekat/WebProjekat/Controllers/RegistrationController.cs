@@ -51,7 +51,7 @@ namespace WebProjekat.Controllers
                 File.AppendAllText(path, line);
             }
 
-            korisnici = new Korisnici(@"~/App_Data/korisnici.txt");
+            korisnici = new Korisnici(@"~/App_Data/Korisnici.txt");
 
             HttpContext.Current.Application["korisnici"] = korisnici;
             return true;

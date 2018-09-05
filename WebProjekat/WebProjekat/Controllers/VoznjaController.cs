@@ -49,7 +49,7 @@ namespace WebProjekat.Controllers
                 {
                     if (vozac.KorisnickoIme == user.KorisnickoIme)
                     {
-                        return vozac.voznjeKorisnika;
+                        return user.voznjeKorisnika;
                     }
                 }
             }
@@ -265,7 +265,7 @@ namespace WebProjekat.Controllers
                 {
                     if (rider.KorisnickoIme == user.KorisnickoIme)
                     {
-                        return rider.voznjeKorisnika;
+                        return user.voznjeKorisnika;
                     }
                 }
             }

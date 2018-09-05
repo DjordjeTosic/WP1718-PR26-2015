@@ -1,4 +1,4 @@
 0:krele:krele:Djoka:Tosic:Zenski:2511996890149:0644861893:djole.tosic96@gmail.com:Musterija:NE
-1:dragan:drago:Dragan:Torbica:Muski:3123991239:06413213312:drago@gmail.com:Musterija:DA
+1:dragan:drago:Dragan:Torbica:Muski:3123991239:06413213312:drago@gmail.com:Musterija:NE
 2:mia:mia:mia:mia:Zenski:2131:32112414:mia@gmail.com:Musterija:NE
 3:bond:bond:James:Bond:Zenski:1133445566778:312312:bond@gmail.com:Musterija:IGNORE

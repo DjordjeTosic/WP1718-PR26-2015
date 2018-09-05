@@ -39,7 +39,7 @@ namespace WebProjekat.Controllers
             vozaci.list.Add(v);
 
             //string path = @"C:\Users\Coa\Desktop\NovaVerzija\WebAPI\WebAPI\App_Data\vozaci.txt";
-            string path = "~/App_Data/vozaci.txt";
+            string path = "~/App_Data/Vozaci.txt";
             path = HostingEnvironment.MapPath(path);
 
             string line = String.Empty;

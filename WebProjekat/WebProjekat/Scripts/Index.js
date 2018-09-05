@@ -135,7 +135,7 @@ $(document).ready(function () {
             var tip;
             if (($('#TipAutaObicni').is(':checked'))) {
                 tip = $('#TipAutaObicni').val();
-                alert("tacno!");
+                
             }
             else {
                 tip = $('#KombiAuto').val();
@@ -662,7 +662,7 @@ $(document).ready(function () {
                             }
                         });
                     });
-
+                    
                 }
             });
 
@@ -912,7 +912,7 @@ $(document).ready(function () {
                                             let komentar = {
                                                 Opis: `${opis}`,
                                                 Ocena: `${ocena}`,
-                                                IdVoznje: `${index}`
+                                                Id: `${index}`
                                             };
 
                                             $.ajax({
@@ -1088,7 +1088,7 @@ $(document).ready(function () {
                             let komentar = {
                                 Opis: `${opis}`,
                                 Ocena: `${ocena}`,
-                                IdVoznje: id
+                                IdVoznja: id
                             };
 
                             $.ajax({
@@ -1228,7 +1228,7 @@ $(document).ready(function () {
             var tipVoznjaDispecer;
             if (($('#TipAutaObicniVoznjaDispecer').is(':checked'))) {
                 tipVoznjaDispecer = $('#TipAutaObicniVoznjaDispecer').val();
-                alert("tacno!");
+                
             }
             else if (($('#KombiAutoVoznjaDispecer').is(':checked'))) {
                 tipVoznjaDispecer = $('#KombiAutoVoznjaDispecer').val();
@@ -1304,6 +1304,7 @@ $(document).ready(function () {
 
                             if (najblizi.length >= 5) {
                                 petNajblizih[0] = najblizi[0];
+                                
                                 petNajblizih[1] = najblizi[1];
                                 petNajblizih[2] = najblizi[2];
                                 petNajblizih[3] = najblizi[3];
@@ -1325,7 +1326,7 @@ $(document).ready(function () {
                             } else {
                                 petNajblizih[0] = "Nema slobodnih";
                             }
-                            alert(petNajblizih[0].KorisnickoIme);
+                            
 
                             var status;
                             if (data[index].StatusVoznje == 0) {
@@ -1354,7 +1355,7 @@ $(document).ready(function () {
 
 
                             $(petNajblizih).each(function (indeks) {
-                                table += `<option value="${petNajblizih[indeks].idKorisnik}">${petNajblizih[indeks].idKorisnik}</option>`
+                                table += `<option value="${petNajblizih[indeks].KorisnickoIme}">${petNajblizih[indeks].KorisnickoIme}</option>`
                             });
 
                             table += `</select></td>`
@@ -1370,7 +1371,7 @@ $(document).ready(function () {
                                 var num = index;
                                 var vozac = `${$('#slobodniVozaciDispecer' + index).val()}`;
                                 var status2 = statusi[index];
-                                alert("jebi se");
+                                
                                 $.ajax({
                                     
                                     url: `/api/Dispecer/` + index,

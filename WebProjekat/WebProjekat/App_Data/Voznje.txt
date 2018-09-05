@@ -5,10 +5,17 @@
 4|8/25/2018 9:06:03 PM|11.9|88|Brace Ribnikara 9|Novi Sad|21000|Kombi|admin1|89.7|100|Vojvode Putnika 10|Beograd||admin1|luja|1300||||||Obradjena
 5|8/27/2018 8:43:04 PM|312.4|123.4|asa|bassa|21312|Putnicki|admin1|0|0||||admin1|novi|0||||||Prihvacena
 6|9/3/2018 2:02:25 PM|13.4|444.4|Vojvode Stepe 9|Beograd|21000|Svejedno|krele|0|0|||||suma|0|Haosa|9/3/2018 2:40:21 PM|suma||3|Neuspesna
-7|9/3/2018 2:45:24 PM|11.1|44.6|Tamo neka 19|Mitrovica|22110|Svejedno|krele|13.6|999|Cara Lazara 99|Sid|||suma|1980||||||Obradjena
+7|9/3/2018 2:45:24 PM|11.1|44.6|Tamo neka 19|Mitrovica|22110|Svejedno|krele|45.2415128349586|19.8264134851963|Miše Dimitrijevića 79| Novi Sad|2100||suma|450||||||Uspesna
 8|9/3/2018 5:52:14 PM|45.2434769416646|19.8406613794834|Bulevar cara Lazara| Novi Sad 21000|21000|Kombi|krele|0|0||||admin1|luja|0|ajmo|9/4/2018 9:51:22 PM|luja||10|Neuspesna
-9|9/3/2018 5:55:41 PM|45.2432654257434|19.8201354198886|Bulevar Evrope 17| Novi Sad 406018|406018|Putnicki|krele|0|0|||||suma|0||||||Prihvacena
+9|9/3/2018 5:55:41 PM|45.2432654257434|19.8201354198886|Bulevar Evrope 17| Novi Sad 406018|406018|Putnicki|krele|0|0|||||suma|0|Ok voznja|9/5/2018 11:44:38 AM|suma||6|Neuspesna
 10|9/3/2018 6:05:10 PM|45.2416639225006|19.8426354853184|Narodnog fronta 10| Novi Sad 21102|21102|Kombi|krele|0|0||||||0|Odlicna|9/4/2018 9:47:28 PM|luja||10|Neuspesna
-11|9/4/2018 4:13:35 PM|45.2407271732637|19.8400176493199|Narodnog fronta| Novi Sad 21102|21102|Kombi|bond|0|0||||||0|asdsdsa|9/4/2018 4:26:11 PM|bond||5|Otkazana
+11|9/4/2018 4:13:35 PM|45.2407271732637|19.8400176493199|Narodnog fronta| Novi Sad 21102|21102|Kombi|bond|0|0||||||0|adsasd|9/5/2018 12:07:51 PM|bond||8|Otkazana
 12|9/4/2018 9:27:12 PM|45.2431445591491|19.8448670832188|Boška Buhe 8| Novi Sad 21000|21000|Kombi|admin1|0|0||||admin1|mile|0||||||Prihvacena
 13|9/4/2018 9:57:28 PM|45.243235209119|19.8321855989964|Tolstojeva 41| Novi Sad|21000|Putnicki|krele|0|0|||||Kimi|0|Vrlo lose iskustvo|9/4/2018 9:58:37 PM|Kimi||6|Neuspesna
+14|9/5/2018 9:13:47 AM|45.2432956423518|19.834824892667|Alekse Šantića 25| Novi Sad 21000|21000|Kombi|bond|45.2389442852718|19.8442233530552|Most slobode| Novi Sad|21000||Kimi|350||||||Uspesna
+15|9/5/2018 9:14:17 AM|45.2419963136786|19.8237527338536|Tone Hadžića 9| Novi Sad 21000|21000|Putnicki|bond|0|0|||||Kimi|0|sajze|9/5/2018 11:23:05 AM|Kimi||1|Neuspesna
+16|9/5/2018 10:34:22 AM|45.2429934755447|19.820405337003|Bulevar Evrope 47| Novi Sad|21000|Putnicki|bond|0|0|||||Kimi|0|asdsa|9/5/2018 11:32:11 AM|Kimi||2|Neuspesna
+17|9/5/2018 11:48:43 AM|45.2446855889642|19.8398459879429|Bulevar oslobođenja 100| Novi Sad 21102|21102|Putnicki|bond|0|0|||||Kimi|0|odlicno|9/5/2018 11:49:28 AM|Kimi||9|Neuspesna
+18|9/5/2018 11:56:33 AM|45.2416941399608|19.8406184641392|PC Nis Gasprom Njeft| Narodnog fronta 12|12323|Kombi|krele|0|0|||||Kimi|0|Ajde radi|9/5/2018 11:59:02 AM|Kimi||6|Neuspesna
+19|9/5/2018 12:04:47 PM|45.2455316267739|19.8373139826329|Lasla Gala 23| Novi Sad 21000|21000|Putnicki|bond|0|0|||||Kimi|0|radi radi|9/5/2018 12:05:27 PM|Kimi||3|Neuspesna
+20|9/5/2018 12:08:49 PM|45.2406667372987|19.8219502893955|Bulevar Evrope 42| Novi Sad 406018|21000|Kombi|bond|0|0|||||Kimi|0|asdasdasa|9/5/2018 12:09:27 PM|Kimi||5|Neuspesna
