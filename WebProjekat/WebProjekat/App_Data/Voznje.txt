@@ -1,5 +1,1 @@
-0|9/5/2018 5:53:36 PM|45.2422682686505|19.8352111307652|Bulevar cara Lazara 53| Novi Sad 21000|21000|Putnicki|miki|0|0|||||mile|0||||||Prihvacena
-1|9/5/2018 6:16:00 PM|45.2434467251527|19.8302973238499|Miše Dimitrijevića 53| Novi Sad 403541|403541|Putnicki|miki|0|0||||admin1|zmaj|0||||||Prihvacena
-2|9/5/2018 6:17:14 PM|45.2417243574049|19.826713892606|Miše Dimitrijevića 79| Novi Sad|21000|Putnicki||0|0||||admin1|sumaher|0|Vrlo lose|9/5/2018 6:41:50 PM|sumaher||1|Neuspesna
-3|9/5/2018 6:41:13 PM|45.2413315293779|19.8372066942723|Šekspirova 6| Novi Sad 21000|21000|Putnicki|miki|0|0|||||sumaher|0|adsdass|9/5/2018 6:51:43 PM|sumaher||3|Neuspesna
-4|9/5/2018 6:46:45 PM|45.2426308732548|19.8205555407078|Bulevar Evrope| Novi Sad|21000|Putnicki|miki|0|0|||||sumaher|0|Lose|9/5/2018 6:47:32 PM|sumaher||4|Neuspesna
+0|9/5/2018 9:27:55 PM|45.2417243574049|19.8428929773838|Narodnog fronta 10| Novi Sad 21102|21102|Putnicki|miki|0|0||||||0||||||Kreirana

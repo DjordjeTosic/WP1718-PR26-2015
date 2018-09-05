@@ -274,7 +274,7 @@ $(document).ready(function () {
             $('#ProfilMuskoVozac').prop('checked', true);
             $('#ProfilZenskoVozac').prop('checked', false);
         }
-        $('#buttonVozac').click(function () {
+        $('#buttonVozac1').click(function () {
             var sexVozac;
             if (($('#ProfilMuskoVozac').is(':checked'))) {
                 sexVozac = $('#ProfilMuskoVozac').val();
@@ -1088,7 +1088,7 @@ $(document).ready(function () {
                             let komentar = {
                                 Opis: `${opis}`,
                                 Ocena: `${ocena}`,
-                                IdVoznja: id
+                                idVoznja: id
                             };
 
                             $.ajax({
